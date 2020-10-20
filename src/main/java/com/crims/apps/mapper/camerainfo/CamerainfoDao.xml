@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.camerainfo.CamerainfoDao">
+<update id="update" parameterType="com.crims.apps.model.camerainfo.ConfCamerainfo">
+    update conf_camerainfo set ${zname}=#{zvalue} where deviceid = #{deviceid}
+</update>
+
+    <select id="findType" resultType="String">
+        select COLUMN_NAME name from INFORMATION_SCHEMA.Columns where table_name='conf_camerainfo' and table_schema='crimsdbs'
+    </select>
+    <select id="findValueById" resultType="String" parameterType="String">
+        select ${s} from conf_camerainfo where deviceid = #{deviceid}
+    </select>
+    <update id="updateConf" parameterType="String">
+        update conf_camerainfo set ${type}=#{value} where deviceid = #{deviceid}
+    </update>
+    <select id="find" parameterType="String" resultType="String">
+        select * from conf_camerainfo where deviceid = #{String}
+    </select>
+    <insert id="addConf" parameterType="String">
+        insert into conf_camerainfo(deviceid,${type}) values(#{deviceid},#{val})
+    </insert>
+</mapper>

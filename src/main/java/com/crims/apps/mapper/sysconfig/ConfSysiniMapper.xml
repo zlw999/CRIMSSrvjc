@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.sysconfig.ConfSysiniDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.common.struct.ConfSysini">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="key" jdbcType="VARCHAR" property="key" />
+        <result column="value" jdbcType="VARCHAR" property="value" />
+        <result column="dsp" jdbcType="VARCHAR" property="dsp" />
+    </resultMap>
+
+    <select id="getConfSysini" resultMap="BaseResultMap">
+        SELECT * FROM conf_sysini
+    </select>
+    <select id="findimgpath" resultType="String">
+        select value from conf_sysini where id=10
+    </select>
+    <select id="findimgpath1" resultType="String">
+        select value from conf_sysini where id=12
+    </select>
+    <select id="findfilepath" resultType="String">
+        select value from conf_sysini where id=9
+    </select>
+    <select id="findfilepath1" resultType="String">
+        select value from conf_sysini where id=11
+    </select>
+
+</mapper>

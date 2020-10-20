@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.knowledge.ConfKnowledgeannexDao">
+<insert id="saveConfKnowledgeannex" parameterType="com.crims.apps.model.knowledge.ConfKnowledgeannex">
+    insert into conf_knowledgeannex(indexno,documenttype,documentpath,annexno) values (#{indexno},#{documenttype},#{documentpath},#{annexno})
+</insert>
+
+    <select id="findDocumentpathByIndexno" parameterType="String" resultType="String">
+        select documentpath from conf_knowledgeannex where indexno = #{indexno}
+    </select>
+</mapper>

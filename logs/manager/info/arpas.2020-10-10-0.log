@@ -1,0 +1,2 @@
+2020-10-10 09:39:05.389 default [Thread-9] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-10-10 09:39:05.443 default [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

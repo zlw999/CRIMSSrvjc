@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ChannelInfoDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfChannel">
+        <result column="channelid" jdbcType="VARCHAR" property="channelid" />
+        <result column="channelname" jdbcType="VARCHAR" property="channelname" />
+        <result column="typeid" jdbcType="VARCHAR" property="typeid" />
+        <result column="version" jdbcType="VARCHAR" property="version" />
+        <result column="factoryid" jdbcType="VARCHAR" property="factoryid" />
+        <result column="location" jdbcType="VARCHAR" property="location" />
+        <result column="dsp" jdbcType="VARCHAR" property="dsp" />
+        <result column="mappingchannelid" jdbcType="VARCHAR" property="mappingchannelid" />
+        <result column="groupid" jdbcType="VARCHAR" property="groupid" />
+        <result column="groupname" jdbcType="VARCHAR" property="groupname" />
+        <result column="videoenctype" jdbcType="INTEGER" property="videoenctype" />
+        <result column="streamtype" jdbcType="INTEGER" property="streamtype" />
+        <result column="mainresolution" jdbcType="INTEGER" property="mainresolution" />
+        <result column="mainstreamframerate" jdbcType="INTEGER" property="mainstreamframerate" />
+        <result column="mainstreamgop" jdbcType="INTEGER" property="mainstreamgop" />
+        <result column="subresolution" jdbcType="INTEGER" property="subresolution" />
+        <result column="srcnodeid" jdbcType="VARCHAR" property="srcnodeid" />
+        <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+        <result column="usestate" jdbcType="INTEGER" property="usestate" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+        <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+        <result column="lastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        channelid, channelname, typeid, version, factoryid, location,
+        dsp, mappingchannelid, groupid, groupname, videoenctype, streamtype,
+        mainresolution, mainstreamframerate, mainstreamgop, subresolution, srcnodeid, deviceid,
+        usestate, operateaction, operateuserid, operateusername, lastModifyTime
+    </sql>
+
+    <select id="getConfChannelList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_channel ORDER BY channelid DESC
+    </select>
+
+    <select id="getChannelSizeByDeviceID" resultType="java.lang.Integer" parameterType = "java.lang.String">
+        SELECT count(*) FROM conf_channel where deviceid = #{deviceid,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getConfChannelByCId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_channel
+        where channelid like  #{channelid,jdbcType=VARCHAR} ORDER BY channelid DESC
+    </select>
+
+    <insert id="insertChannelInfo" parameterType="com.crims.apps.model.confinfo.ConfChannel">
+        insert into conf_channel
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="channelid != null">channelid,</if><if test="channelname != null">channelname,</if><if test="typeid != null">typeid,</if><if test="version != null">version,</if>
+            <if test="factoryid != null">factoryid,</if><if test="location != null">location,</if><if test="dsp != null">dsp,</if><if test="mappingchannelid != null">mappingchannelid,</if>
+            <if test="groupid != null">groupid,</if><if test="groupname != null">groupname,</if><if test="videoenctype != null">videoenctype,</if><if test="streamtype != null">streamtype,</if>
+            <if test="mainresolution != null">mainresolution,</if><if test="mainstreamframerate != null">mainstreamframerate,</if><if test="mainstreamgop != null">mainstreamgop,</if><if test="subresolution != null">subresolution,</if>
+            <if test="srcnodeid != null">srcnodeid,</if><if test="deviceid != null">deviceid,</if><if test="usestate != null">usestate,</if><if test="operateaction != null">operateaction,</if>
+            <if test="operateuserid != null">operateuserid,</if><if test="operateusername != null">operateusername,</if><if test="lastModifyTime != null">lastModifyTime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="channelid != null">#{channelid,jdbcType=VARCHAR},</if><if test="channelname != null">#{channelname,jdbcType=VARCHAR},</if><if test="typeid != null">#{typeid,jdbcType=VARCHAR},</if><if test="version != null">#{version,jdbcType=VARCHAR},</if>
+            <if test="factoryid != null">#{factoryid,jdbcType=VARCHAR},</if><if test="location != null">#{location,jdbcType=VARCHAR},</if><if test="dsp != null">#{dsp,jdbcType=VARCHAR},</if><if test="mappingchannelid != null">#{mappingchannelid,jdbcType=VARCHAR},</if>
+            <if test="groupid != null">#{groupid,jdbcType=VARCHAR},</if><if test="groupname != null">#{groupname,jdbcType=VARCHAR},</if><if test="videoenctype != null">#{videoenctype,jdbcType=INTEGER},</if><if test="streamtype != null">#{streamtype,jdbcType=INTEGER},</if>
+            <if test="mainresolution != null">#{mainresolution,jdbcType=INTEGER},</if><if test="mainstreamframerate != null">#{mainstreamframerate,jdbcType=INTEGER},</if><if test="mainstreamgop != null">#{mainstreamgop,jdbcType=INTEGER},</if>
+            <if test="subresolution != null">#{subresolution,jdbcType=INTEGER},</if><if test="srcnodeid != null">#{srcnodeid,jdbcType=VARCHAR},</if><if test="deviceid != null">#{deviceid,jdbcType=VARCHAR},</if>
+            <if test="usestate != null">#{usestate,jdbcType=INTEGER},</if><if test="operateaction != null">#{operateaction,jdbcType=INTEGER},</if>
+            <if test="operateuserid != null">#{operateuserid,jdbcType=VARCHAR},</if><if test="operateusername != null">#{operateusername,jdbcType=VARCHAR},</if><if test="lastModifyTime != null">#{lastModifyTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+
+    <update id="updateChannelInfo" parameterType="com.crims.apps.model.confinfo.ConfChannel">
+        delete from conf_channel
+        where deviceid = #{deviceid,jdbcType=VARCHAR}
+     </update>
+
+    <delete id="deleteChannelInfo" parameterType="com.crims.apps.model.confinfo.ConfChannel">
+        update conf_channel
+        set usestate = #{usestate,jdbcType=INTEGER},
+            operateaction = #{operateaction,jdbcType=INTEGER},
+            lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP}
+        where deviceid = #{deviceid,jdbcType=VARCHAR}
+    </delete>
+
+    <select id="getMaxChannelID" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_channel
+        where typeid = #{typeid,jdbcType=VARCHAR} order by channelid desc
+    </select>
+
+    <select id="getChannelNum" parameterType="string" resultType="integer">
+        select count(*) from conf_channel where typeid = #{typeID} and deviceid = #{deviceID}
+    </select>
+
+    <select id="getChannelName" parameterType="string" resultType="string">
+        select channelname from conf_channel where channelid = #{channelID}
+    </select>
+
+    <update id="updateChannelInfoByCID" parameterType="map">
+        update conf_channel
+        set deviceid = #{deviceid,jdbcType=VARCHAR}
+        where channelid = #{channelid,jdbcType=VARCHAR}
+     </update>
+</mapper>

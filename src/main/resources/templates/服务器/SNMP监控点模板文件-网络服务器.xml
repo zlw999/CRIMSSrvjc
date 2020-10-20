@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SNMPMIBs version="0100" flag="MDSnmpOidInfo" dsp="SNMP MIB库信息模板">	
+	<items GroupSN="01" gcl="01" GroupName="基本信息" ItemNum="5">
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D0302" name="物理内存占用率" ValueType="0x00010B07" unit="0x000A0401" MtType="0x00011001" ItemSN="01" alarmtype="0x07010200" enabled="true">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" TypeId="0x000D0810" name="存储类型:物理内存" ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.2">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageSize" TypeId="0x000D0812" name="物理内存总大小"    ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(02) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="single">1.3.6.1.2.1.25.2.3.1.5</OID>
+				<OID OIDSN="03" OIDDESC="hrStorageUsed" TypeId="0x000D0813" name="物理内存使用值"    ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(03) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="single">1.3.6.1.2.1.25.2.3.1.6</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">100</Variable>
+					<Variable name="constant_2">65536</Variable>
+					<Variable name="constant_3">1024</Variable>
+				</Variables>
+				<LScript>GetValue("03") * GetValue("constant_1") / GetValue("02")</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010200">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010200">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010200" >90-100</threshold>
+			</thresholds>
+		</item>
+	 
+		<item algorithm="0x000B0301" accuracy="0.1" TypeId="0x000D0301" name="CPU占用率" ValueType="0x00010B07"  unit="0x000A0401" MtType="0x00011001" ItemSN="02" alarmtype="0x07010100" enabled="true">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrProcessorLoad" TypeId="0x000D0301" name="CPU占用率" ValueType="0x00010B07" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="single">1.3.6.1.2.1.25.3.3.1.2</OID>
+			</OIDs>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010100">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010100">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010100">90-100</threshold>
+			</thresholds>
+		</item>
+		
+		<!--item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D0807" name="磁盘容量" ValueType="0x00010B05" unit="0x000A0303" MtType="0x00011001" ItemSN="03" alarmtype="0x07010200" enabled="false">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" TypeId="0x000D0810" name="存储类型:磁盘分区" 	ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.4">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageSize" TypeId="0x000D0812" name="分区大小"    			ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" formula="sum">1.3.6.1.2.1.25.2.3.1.5</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">4096</Variable>
+					<Variable name="constant_2">1024</Variable>
+				</Variables>
+				<LScript>GetValue("02") * GetValue("constant_1") / GetValue("constant_2") / GetValue("constant_2")</LScript>
+			</ValueRule>
+		</item>	
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D0808" name="磁盘使用容量" ValueType="0x00010B05" unit="0x000A0303" MtType="0x00011001" ItemSN="04" alarmtype="0x07010200" enabled="false">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" TypeId="0x000D0810" name="存储类型:磁盘分区" 	ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.4">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageUsed" TypeId="0x000D0813" name="分区使用大小"    	ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" formula="sum">1.3.6.1.2.1.25.2.3.1.6</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">4096</Variable>
+					<Variable name="constant_2">1024</Variable>
+				</Variables>
+				<LScript>GetValue("02") * GetValue("constant_1") / GetValue("constant_2") / GetValue("constant_2")</LScript>
+			</ValueRule>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D080A" name="磁盘使用率" ValueType="0x00010B07" unit="0x000A0401" MtType="0x00011001" ItemSN="05" alarmtype="0x07010301" enabled="false">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" TypeId="0x000D0810" name="存储类型:磁盘分区" 	ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.4">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageSize" TypeId="0x000D0812" name="分区大小"    			ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" formula="sum">1.3.6.1.2.1.25.2.3.1.5</OID>
+				<OID OIDSN="03" OIDDESC="hrStorageUsed" TypeId="0x000D0813" name="分区使用大小"    	ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" formula="sum">1.3.6.1.2.1.25.2.3.1.6</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">100</Variable>
+				</Variables>
+				<LScript>GetValue("03") * GetValue("constant_1") / GetValue("02")</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010301">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010301">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010301">90-100</threshold>
+			</thresholds>
+		</item-->	
+
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D030A" name="磁盘总占用率" ValueType="0x00010B07" unit="0x000A0401" MtType="0x00011001" ItemSN="06" alarmtype="0x07010301" enabled="true">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" TypeId="0x000D0810" name="存储类型:磁盘分区" 	ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.4">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageSize" TypeId="0x000D0812" name="分区大小"    			ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(02) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="sum">1.3.6.1.2.1.25.2.3.1.5</OID>
+				<OID OIDSN="03" OIDDESC="hrStorageUsed" TypeId="0x000D0813" name="分区使用大小"    	ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(03) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="sum">1.3.6.1.2.1.25.2.3.1.6</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">100</Variable>
+					<Variable name="constant_2">4096</Variable>
+					<Variable name="constant_3">1024</Variable>
+				</Variables>
+				<LScript>GetValue("03") * GetValue("constant_1") / GetValue("02")</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010301">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010301">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010301">90-100</threshold>
+			</thresholds>
+		</item>
+
+		<item algorithm="0x000B0102" accuracy="0.1" TypeId="0x000D030B" name="磁盘分区最大占用率" ValueType="0x00010B07" unit="0x000A0401" MtType="0x00011001" ItemSN="07" alarmtype="0x07010301" enabled="true">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" TypeId="0x000D0810" name="存储类型:磁盘分区" 	ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.4">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageSize" TypeId="0x000D0812" name="分区大小"    			ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(02) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="sum">1.3.6.1.2.1.25.2.3.1.5</OID>
+				<OID OIDSN="03" OIDDESC="hrStorageUsed" TypeId="0x000D0813" name="分区使用大小"    	ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(03) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="sum">1.3.6.1.2.1.25.2.3.1.6</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">100</Variable>
+					<Variable name="constant_2">4096</Variable>
+					<Variable name="constant_3">1024</Variable>
+				</Variables>
+				<LScript>GetValue("03") * GetValue("constant_1") / GetValue("02")</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010301">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010301">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010301">90-100</threshold>
+			</thresholds>
+		</item>
+		
+		<item algorithm="0x000B0102" accuracy="0.1" TypeId="0x000D030C" name="磁盘最大占用分区" ValueType="0x00010B09" unit="0x000A0401" MtType="0x00011001" ItemSN="08" alarmtype="0x00000000" enabled="true">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="hrStorageType" 	TypeId="0x000D0810" name="存储类型:磁盘分区" 	ValueType="0x00010B09" IndexRelation="0x02" relativity="indirect" IndexProvider="yes" IndexSrcOIDSN=""   index="-1" formula="single" EQValue="1.3.6.1.2.1.25.2.1.4">1.3.6.1.2.1.25.2.3.1.2</OID>
+				<OID OIDSN="02" OIDDESC="hrStorageSize" 	TypeId="0x000D0812" name="分区大小"    			ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(02) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="sum">1.3.6.1.2.1.25.2.3.1.5</OID>
+				<OID OIDSN="03" OIDDESC="hrStorageUsed" 	TypeId="0x000D0813" name="分区使用大小"    	ValueType="0x00010B08" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" algorithm="0x000B0101" LScript="GetValue(03) * GetValue(constant_2) / GetValue(constant_3) / GetValue(constant_3)" formula="sum">1.3.6.1.2.1.25.2.3.1.6</OID>
+				<OID OIDSN="04" OIDDESC="hrStorageDescr"	TypeId="0x000D0811" name="分区盘符"    			ValueType="0x00010B09" IndexRelation="0x01" relativity="direct"   IndexProvider="no"  IndexSrcOIDSN="01" index="-1" formula="single" getValue="true">1.3.6.1.2.1.25.2.3.1.3</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">100</Variable>
+					<Variable name="constant_2">4096</Variable>
+					<Variable name="constant_3">1024</Variable>
+				</Variables>
+				<LScript>GetValue("03") * GetValue("constant_1") / GetValue("02")</LScript>
+			</ValueRule>
+		</item>
+		
+	</items>
+	<items GroupSN="02" gcl="02" GroupName="网卡信息" ItemNum="3" enabled="false">
+		<Indexs>
+			<Index>?</Index>
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifIndex" 		TypeId="0x000D0400" name="端口索引"    ValueType="0x00010B05" index="-1">1.3.6.1.2.1.2.2.1.1</OID>
+				<OID OIDSN="02" OIDDESC="ifDesc" 		TypeId="0x000D0400" name="端口描述"    ValueType="0x00010B09" index="-1">1.3.6.1.2.1.2.2.1.2</OID>
+				<OID OIDSN="03" OIDDESC="ifType" 		TypeId="0x000D0401" name="端口类型"    ValueType="0x00010B09" index="-1">1.3.6.1.2.1.2.2.1.3</OID>
+				<OID OIDSN="04" OIDDESC="ifPhysAddress" TypeId="0x000D0403" name="端口MAC地址" ValueType="0x00010B09" index="-1">1.3.6.1.2.1.2.2.1.6</OID>
+			</OIDs>
+		</Indexs>
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D0419" name="网络带宽占用率" ValueType="0x00010B07" unit="0x000A0401" MtType="0x00011001" ItemSN="01" alarmtype="0x07040200">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifInOctets"  TypeId="0x000D0408" name="输入流量字节数"           ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="div">1.3.6.1.2.1.2.2.1.10</OID>
+				<OID OIDSN="02" OIDDESC="ifOutOctets" TypeId="0x000D040C" name="输出流量字节数"           ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="div">1.3.6.1.2.1.2.2.1.16</OID>
+				<OID OIDSN="03" OIDDESC="ifSpeed"     TypeId="0x000D0402" name="以字节数为单位的接口速度" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="single">1.3.6.1.2.1.2.2.1.5</OID>
+				<OID OIDSN="04" OIDDESC="sysUpTime"   TypeId="0x000D0303" name="时间"                      ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="0"  formula="div">1.3.6.1.2.1.1.3</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">8</Variable>
+					<Variable name="constant_2">100</Variable>
+				</Variables>
+				<LScript>(GetValue("01") + GetValue("02")) * GetValue("constant_1") * GetValue("constant_2") / (GetValue("03") * GetValue("04"))</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07040200">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07040200">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07040200">90-100</threshold>
+			</thresholds>
+		</item>
+		
+		<item algorithm="0x000B0101" accuracy="1" TypeId="0x000D041A" name="网络带宽" ValueType="0x00010B04"  unit="0x000A0302" MtType="0x00011001" ItemSN="02">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifSpeed" TypeId="0x000D0402" name="以字节数为单位的接口速度" ValueType="0x00010B07" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="single">1.3.6.1.2.1.2.2.1.5</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">1000</Variable>
+				</Variables>
+				<LScript>GetValue("01") / GetValue("constant_1")</LScript>
+			</ValueRule>
+			<MaxValue>100001</MaxValue>
+			<MinValue>100000</MinValue>
+			<thresholds>
+				<threshold level="0x00030301" DelayTime="5">0-100000</threshold>
+			</thresholds>
+		</item>
+ 
+		<item algorithm="0x000B0101" accuracy="1" TypeId="0x000D041B" name="网络接口状态" ValueType="0x00010B03"  unit="0x000A0000" MtType="0x00011002" ItemSN="03" alarmtype="0x07040100">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifAdminStatus" TypeId="0x000D0405" name="配置状态" ValueType="0x00010B03" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="single">1.3.6.1.2.1.2.2.1.7</OID>
+				<OID OIDSN="02" OIDDESC="ifOperStatus"  TypeId="0x000D0406" name="工作状态" ValueType="0x00010B03" IndexRelation="0x02" relativity="direct" IndexProvider="no" IndexSrcOIDSN="" index="-1" formula="single">1.3.6.1.2.1.2.2.1.8</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">10</Variable>
+				</Variables>
+				<LScript>GetValue("01") * GetValue("constant_1") + GetValue("02")</LScript>
+			</ValueRule>
+			<MaxValue>33</MaxValue>
+			<MinValue>11</MinValue>
+			<typedsps>
+				<valuedsp key="11">正常</valuedsp>
+				<valuedsp key="12">没接线</valuedsp>
+				<valuedsp key="13">测试</valuedsp>
+				<valuedsp key="21">故障</valuedsp>
+				<valuedsp key="22">故障</valuedsp>
+				<valuedsp key="23">故障</valuedsp>
+				<valuedsp key="31">正常</valuedsp>
+				<valuedsp key="32">故障</valuedsp>
+				<valuedsp key="33">测试</valuedsp>
+			</typedsps>
+		</item>		 
+	</items>
+</SNMPMIBs>

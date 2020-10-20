@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.devicemonitor.ConfMonitorPointDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.devicemonitor.ConfMonitorPoint">
+    <id column="mpid" jdbcType="VARCHAR" property="mpid" />
+    <result column="appsrvid" jdbcType="VARCHAR" property="appsrvid" />
+    <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    <result column="mptype" jdbcType="INTEGER" property="mptype" />
+    <result column="mpname" jdbcType="VARCHAR" property="mpname" />
+    <result column="dsp" jdbcType="VARCHAR" property="dsp" />
+    <result column="usestate" jdbcType="INTEGER" property="usestate" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mpid, appsrvid, deviceid, mptype, mpname, dsp,usestate, operateaction, lastmodifytime
+  </sql>
+
+  <select id="getList" resultType="com.crims.apps.model.devicemonitor.ConfMonitorPoint" parameterType="string">
+    select
+    <include refid="Base_Column_List"/>
+    from conf_monitorpoint
+    <where>
+      <if test="operate!=null">
+        and operateaction=#{operate}
+      </if>
+      <if test="operate==null">
+        and operateaction &lt;&gt;0x00010803
+      </if>
+      <if test="deviceId!=null and deviceId!=''">and
+        deviceid =#{deviceId}
+      </if>
+      <if test="locationCode!=null and locationCode!=''">
+        and deviceid in (select deviceid from conf_device where LEFT(CONCAT(LEFT(deviceid,8)  ,SUBSTR(deviceid,11,5)),LENGTH(#{locationCode})) =#{locationCode})
+      </if>
+      <if test="mpType!=null and mpType!=''">and
+        mptype =#{mpType}
+      </if>
+      <if test="mpName!=null and mpName!='' ">
+        and mpname LIKE
+        CONCAT('%',#{mpName,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteByDeviceId" parameterType="string">
+     delete from conf_monitorpoint
+    where deviceid = #{deviceId,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.crims.apps.model.devicemonitor.ConfMonitorPoint">
+    insert into conf_monitorpoint (mpid, appsrvid, deviceid, 
+      mptype, mpname, dsp, usestate,
+      operateaction, lastmodifytime)
+    values (#{mpid,jdbcType=VARCHAR}, #{appsrvid,jdbcType=VARCHAR}, #{deviceid,jdbcType=VARCHAR}, 
+      #{mptype,jdbcType=INTEGER}, #{mpname,jdbcType=VARCHAR}, #{dsp,jdbcType=VARCHAR}, #{usestate,jdbcType=INTEGER},
+      #{operateaction,jdbcType=INTEGER}, #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertList" parameterType="java.util.List">
+      insert into conf_monitorpoint (mpid, appsrvid, deviceid,
+      mptype, mpname, dsp, usestate,
+      operateaction, lastmodifytime)
+    values  <foreach collection="list" index="index" item="item" separator=",">
+    (#{item.mpid,jdbcType=VARCHAR}, #{item.appsrvid,jdbcType=VARCHAR}, #{item.deviceid,jdbcType=VARCHAR},
+      #{item.mptype,jdbcType=INTEGER}, #{item.mpname,jdbcType=VARCHAR},#{item.dsp,jdbcType=VARCHAR}, #{item.usestate,jdbcType=INTEGER},
+      #{item.operateaction,jdbcType=INTEGER}, #{item.lastmodifytime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+
+    <select id="getMonitorPointList" resultType="com.crims.apps.model.devicemonitor.ConfMonitorPoint" parameterType="string">
+        select
+        <include refid="Base_Column_List"/>
+        from conf_monitorpoint where deviceid = #{deviceId}
+    </select>
+</mapper>

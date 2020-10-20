@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfNodeSrvDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfNodeSrv">
+    <id column="nodeid" jdbcType="VARCHAR" property="nodeid" />
+    <result column="nodename" jdbcType="VARCHAR" property="nodename" />
+    <result column="nodetype" jdbcType="VARCHAR" property="nodetype" />
+    <result column="factoryid" jdbcType="VARCHAR" property="factoryid" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="sigport" jdbcType="INTEGER" property="sigport" />
+    <result column="streamport" jdbcType="INTEGER" property="streamport" />
+    <result column="transmode" jdbcType="INTEGER" property="transmode" />
+    <result column="multicastip" jdbcType="VARCHAR" property="multicastip" />
+    <result column="multicastport" jdbcType="INTEGER" property="multicastport" />
+    <result column="mannodeid" jdbcType="VARCHAR" property="mannodeid" />
+    <result column="tmannodeid" jdbcType="VARCHAR" property="tmannodeid" />
+    <result column="routeip" jdbcType="VARCHAR" property="routeip" />
+    <result column="routeport" jdbcType="INTEGER" property="routeport" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="reserve" jdbcType="VARCHAR" property="reserve" />
+    <result column="maxdispatch" jdbcType="INTEGER" property="maxdispatch" />
+    <result column="interfacetype" jdbcType="INTEGER" property="interfacetype" />
+    <result column="usestate" jdbcType="INTEGER" property="usestate" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+    <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+    <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    nodeid, nodename, nodetype, factoryid, ip, sigport, streamport, transmode, multicastip, 
+    multicastport, mannodeid, tmannodeid, routeip, routeport, username, password, reserve,
+    maxdispatch, interfacetype, usestate, operateaction, operateuserid, operateusername,
+    lastmodifytime
+  </sql>
+
+  <select id="getNodeName" resultType="String" parameterType="java.lang.String">
+    select nodename from conf_nodesrv where nodeid = #{nodeId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getALL" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from conf_nodesrv
+  </select>
+
+  <insert id="insertConfNodeSrvInfo" parameterType="com.crims.apps.model.confinfo.ConfNodeSrv">
+    insert into conf_nodesrv
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nodeid != null">
+        nodeid,
+      </if>
+      <if test="nodename != null">
+        nodename,
+      </if>
+      <if test="nodetype != null">
+        nodetype,
+      </if>
+      <if test="factoryid != null">
+        factoryid,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="sigport != null">
+        sigport,
+      </if>
+      <if test="streamport != null">
+        streamport,
+      </if>
+      <if test="transmode != null">
+        transmode,
+      </if>
+      <if test="multicastip != null">
+        multicastip,
+      </if>
+      <if test="multicastport != null">
+        multicastport,
+      </if>
+      <if test="mannodeid != null">
+        mannodeid,
+      </if>
+      <if test="tmannodeid != null">
+        tmannodeid,
+      </if>
+      <if test="routeip != null">
+        routeip,
+      </if>
+      <if test="routeport != null">
+        routeport,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="reserve != null">
+        reserve,
+      </if>
+      <if test="maxdispatch != null">
+        maxdispatch,
+      </if>
+      <if test="interfacetype != null">
+        interfacetype,
+      </if>
+      <if test="usestate != null">
+        usestate,
+      </if>
+      <if test="operateaction != null">
+        operateaction,
+      </if>
+      <if test="operateuserid != null">
+        operateuserid,
+      </if>
+      <if test="operateusername != null">
+        operateusername,
+      </if>
+      <if test="lastmodifytime != null">
+        lastmodifytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nodeid != null">
+        #{nodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="nodename != null">
+        #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="nodetype != null">
+        #{nodetype,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryid != null">
+        #{factoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="sigport != null">
+        #{sigport,jdbcType=INTEGER},
+      </if>
+      <if test="streamport != null">
+        #{streamport,jdbcType=INTEGER},
+      </if>
+      <if test="transmode != null">
+        #{transmode,jdbcType=INTEGER},
+      </if>
+      <if test="multicastip != null">
+        #{multicastip,jdbcType=VARCHAR},
+      </if>
+      <if test="multicastport != null">
+        #{multicastport,jdbcType=INTEGER},
+      </if>
+      <if test="mannodeid != null">
+        #{mannodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="tmannodeid != null">
+        #{tmannodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="routeip != null">
+        #{routeip,jdbcType=VARCHAR},
+      </if>
+      <if test="routeport != null">
+        #{routeport,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null">
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="maxdispatch != null">
+        #{maxdispatch,jdbcType=INTEGER},
+      </if>
+      <if test="interfacetype != null">
+        #{interfacetype,jdbcType=INTEGER},
+      </if>
+      <if test="usestate != null">
+        #{usestate,jdbcType=INTEGER},
+      </if>
+      <if test="operateaction != null">
+        #{operateaction,jdbcType=INTEGER},
+      </if>
+      <if test="operateuserid != null">
+        #{operateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="operateusername != null">
+        #{operateusername,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateConfNodeSrvInfo" parameterType="com.crims.apps.model.confinfo.ConfNodeSrv">
+    update conf_nodesrv
+    <set>
+      <if test="nodename != null">
+        nodename = #{nodename,jdbcType=VARCHAR},
+      </if>
+      <if test="nodetype != null">
+        nodetype = #{nodetype,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryid != null">
+        factoryid = #{factoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="sigport != null">
+        sigport = #{sigport,jdbcType=INTEGER},
+      </if>
+      <if test="streamport != null">
+        streamport = #{streamport,jdbcType=INTEGER},
+      </if>
+      <if test="transmode != null">
+        transmode = #{transmode,jdbcType=INTEGER},
+      </if>
+      <if test="multicastip != null">
+        multicastip = #{multicastip,jdbcType=VARCHAR},
+      </if>
+      <if test="multicastport != null">
+        multicastport = #{multicastport,jdbcType=INTEGER},
+      </if>
+      <if test="mannodeid != null">
+        mannodeid = #{mannodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="tmannodeid != null">
+        tmannodeid = #{tmannodeid,jdbcType=VARCHAR},
+      </if>
+      <if test="routeip != null">
+        routeip = #{routeip,jdbcType=VARCHAR},
+      </if>
+      <if test="routeport != null">
+        routeport = #{routeport,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null">
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="maxdispatch != null">
+        maxdispatch = #{maxdispatch,jdbcType=INTEGER},
+      </if>
+      <if test="interfacetype != null">
+        interfacetype = #{interfacetype,jdbcType=INTEGER},
+      </if>
+      <if test="usestate != null">
+        usestate = #{usestate,jdbcType=INTEGER},
+      </if>
+      <if test="operateaction != null">
+        operateaction = #{operateaction,jdbcType=INTEGER},
+      </if>
+      <if test="operateuserid != null">
+        operateuserid = #{operateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="operateusername != null">
+        operateusername = #{operateusername,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifytime != null">
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where nodeid = #{nodeid,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteConfNodeSrvInfo" parameterType="com.crims.apps.model.confinfo.ConfNodeSrv">
+    update conf_nodesrv
+    set operateaction = #{operateaction,jdbcType=INTEGER},
+        usestate = #{usestate,jdbcType=INTEGER},
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where nodeid = #{nodeid,jdbcType=VARCHAR}
+  </delete>
+
+</mapper>

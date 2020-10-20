@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfChannelidTocrealIntDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfChannelidTocrealInt">
+        <result column="TB16ID" jdbcType="VARCHAR" property="TB16ID" />
+        <result column="CRealintID" jdbcType="INTEGER" property="CRealintID" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        TB16ID, CRealintID
+    </sql>
+
+    <select id="getConfChannelidTocrealIntInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_channelidtocrealint
+        where TB16ID = #{tb16ID,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertConfChannelidTocrealInt" parameterType="com.crims.apps.model.confinfo.ConfChannelidTocrealInt">
+        insert into conf_channelidtocrealint(TB16ID,CRealintID)
+        values (#{TB16ID,jdbcType=VARCHAR}, #{CRealintID,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateChannelidTocrealInt" parameterType="com.crims.apps.model.confinfo.ConfChannelidTocrealInt">
+        update conf_channelidtocrealint
+        set CRealintID = #{CRealintID,jdbcType=INTEGER}
+        where TB16ID = #{TB16ID,jdbcType=VARCHAR}
+     </update>
+</mapper>

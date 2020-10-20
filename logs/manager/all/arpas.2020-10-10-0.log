@@ -1,0 +1,11 @@
+2020-10-10 09:39:05.322 [Thread-9] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@13d9b21f, started on Fri Oct 09 09:31:23 CST 2020
+2020-10-10 09:39:05.352 [Thread-9] DEBUG o.s.c.e.PropertySourcesPropertyResolver - Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+2020-10-10 09:39:05.385 [Thread-9] DEBUG o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2020-10-10 09:39:05.387 [Thread-9] DEBUG o.s.c.s.DefaultLifecycleProcessor - Bean 'documentationPluginsBootstrapper' completed its stop procedure
+2020-10-10 09:39:05.389 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-10-10 09:39:05.394 [Thread-9] DEBUG o.s.d.r.l.RedisMessageListenerContainer - Stopped RedisMessageListenerContainer
+2020-10-10 09:39:05.408 [Thread-9] DEBUG io.lettuce.core.RedisClient - Initiate shutdown (100, 100, MILLISECONDS)
+2020-10-10 09:39:05.430 [Thread-9] DEBUG i.l.c.r.DefaultClientResources - Initiate shutdown (0, 2, SECONDS)
+2020-10-10 09:39:05.433 [Thread-9] DEBUG i.l.c.r.DefaultEventLoopGroupProvider - Initiate shutdown (0, 2, SECONDS)
+2020-10-10 09:39:05.442 [Thread-9] DEBUG o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2020-10-10 09:39:05.443 [Thread-9] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

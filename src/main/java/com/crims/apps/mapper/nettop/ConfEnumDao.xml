@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.nettop.ConfEnumDao">
+    <resultMap id="query" type="com.crims.apps.model.nettop.ConfEnum">
+        <id property="id" column="ID" ></id>
+        <result property="name" column="NAME"></result>
+        <result property="itemValue" column="ITEM_VALUE"></result>
+        <result property="itemName" column="ITEM_NAME"></result>
+        <result property="countTrainee" column="COUNT_TRAINEE"></result>
+        <result property="abbreviate" column="abbreviate"></result>
+        <result property="dsp" column="dsp"></result>
+    </resultMap>
+    <select id="findEnumType" resultMap="query" resultType="com.crims.apps.model.nettop.ConfEnum">
+       select * from conf_enum where id='N001'
+   </select>
+    <select id="findEnumChildType" resultType="String">
+         select item_name from conf_enum where id='M036'
+    </select>
+    <select id="findItemValue" parameterType="String" resultType="String">
+        select item_name from conf_enum where item_value=#{item_value}
+    </select>
+    <select id="findItemChildValue" parameterType="com.crims.apps.model.nettop.ConfEnum" resultType="String">
+        select item_name from conf_enum where item_value=#{itemValue} and id=#{id}
+    </select>
+    <select id="findItemName" parameterType="String" resultType="String">
+         select item_name from conf_enum where id='ui02' and item_value=#{String}
+    </select>
+</mapper>

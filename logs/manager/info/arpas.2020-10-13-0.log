@@ -1,0 +1,86 @@
+2020-10-13 09:20:30.782 default [main] INFO  c.crims.CrimsadminMasterApplication - Starting CrimsadminMasterApplication on DESKTOP-O536LBQ with PID 21092 (C:\ProgramFiles\workspace\CRIMSSrvjc\target\classes started by 张龙伟 in C:\ProgramFiles\workspace\CRIMSSrvjc)
+2020-10-13 09:20:30.782 default [main] INFO  c.crims.CrimsadminMasterApplication - No active profile set, falling back to default profiles: default
+2020-10-13 09:20:31.813 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-10-13 09:20:31.828 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-10-13 09:20:31.906 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 62ms. Found 0 repository interfaces.
+2020-10-13 09:20:32.203 default [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$f8e21cfa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-13 09:20:32.234 default [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-10-13 09:20:32.250 default [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$544a57fb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-13 09:20:32.547 default [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 6061 (http)
+2020-10-13 09:20:32.547 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-6061"]
+2020-10-13 09:20:32.563 default [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-10-13 09:20:32.563 default [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2020-10-13 09:20:32.672 default [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-10-13 09:20:32.672 default [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1843 ms
+2020-10-13 09:20:33.765 default [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-13 09:20:34.172 default [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-10-13 09:20:34.234 default [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-10-13 09:20:34.250 default [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-10-13 09:20:34.250 default [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-10-13 09:20:34.484 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_1
+2020-10-13 09:20:34.562 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_2
+2020-10-13 09:20:34.687 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_3
+2020-10-13 09:20:34.781 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_1
+2020-10-13 09:20:34.828 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_2
+2020-10-13 09:20:34.890 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_1
+2020-10-13 09:20:34.921 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_2
+2020-10-13 09:20:34.984 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_3
+2020-10-13 09:20:35.046 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_4
+2020-10-13 09:20:35.234 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_3
+2020-10-13 09:20:35.265 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addZyFileUsingPOST_1
+2020-10-13 09:20:35.296 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_4
+2020-10-13 09:20:35.296 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_5
+2020-10-13 09:20:35.328 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2020-10-13 09:20:35.343 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_5
+2020-10-13 09:20:35.359 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_6
+2020-10-13 09:20:35.390 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-6061"]
+2020-10-13 09:20:35.421 default [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 6061 (http) with context path ''
+2020-10-13 09:20:35.421 default [main] INFO  c.crims.CrimsadminMasterApplication - Started CrimsadminMasterApplication in 5.03 seconds (JVM running for 6.537)
+2020-10-13 09:20:35.546 default [CCSP_MainApp] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-10-13 09:20:35.702 default [CCSP_MainApp] INFO  com.crims.main.MainApp - ...开始初始化...
+2020-10-13 09:20:40.873 default [http-nio-6061-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-13 09:20:40.873 default [http-nio-6061-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-10-13 09:20:40.873 default [http-nio-6061-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2020-10-13 10:10:14.425 default [main] INFO  c.crims.CrimsadminMasterApplication - Starting CrimsadminMasterApplication on DESKTOP-O536LBQ with PID 5204 (C:\ProgramFiles\workspace\CRIMSSrvjc\target\classes started by 张龙伟 in C:\ProgramFiles\workspace\CRIMSSrvjc)
+2020-10-13 10:10:14.425 default [main] INFO  c.crims.CrimsadminMasterApplication - No active profile set, falling back to default profiles: default
+2020-10-13 10:10:15.332 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-10-13 10:10:15.332 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-10-13 10:10:15.410 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63ms. Found 0 repository interfaces.
+2020-10-13 10:10:15.738 default [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$5f964304] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-13 10:10:15.769 default [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-10-13 10:10:15.785 default [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bafe7e05] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-13 10:10:16.050 default [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 6061 (http)
+2020-10-13 10:10:16.050 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-6061"]
+2020-10-13 10:10:16.066 default [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-10-13 10:10:16.066 default [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2020-10-13 10:10:16.159 default [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-10-13 10:10:16.159 default [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1702 ms
+2020-10-13 10:10:17.159 default [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-13 10:10:17.518 default [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-10-13 10:10:17.597 default [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-10-13 10:10:17.612 default [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-10-13 10:10:17.628 default [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-10-13 10:10:17.831 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_1
+2020-10-13 10:10:17.925 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_2
+2020-10-13 10:10:18.018 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_3
+2020-10-13 10:10:18.097 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_1
+2020-10-13 10:10:18.143 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_2
+2020-10-13 10:10:18.206 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_1
+2020-10-13 10:10:18.253 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_2
+2020-10-13 10:10:18.315 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_3
+2020-10-13 10:10:18.378 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_4
+2020-10-13 10:10:18.565 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_3
+2020-10-13 10:10:18.581 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addZyFileUsingPOST_1
+2020-10-13 10:10:18.612 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_4
+2020-10-13 10:10:18.612 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_5
+2020-10-13 10:10:18.643 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2020-10-13 10:10:18.659 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_5
+2020-10-13 10:10:18.690 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_6
+2020-10-13 10:10:18.721 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-6061"]
+2020-10-13 10:10:18.737 default [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 6061 (http) with context path ''
+2020-10-13 10:10:18.737 default [main] INFO  c.crims.CrimsadminMasterApplication - Started CrimsadminMasterApplication in 4.655 seconds (JVM running for 5.604)
+2020-10-13 10:10:18.846 default [CCSP_MainApp] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-10-13 10:10:18.971 default [CCSP_MainApp] INFO  com.crims.main.MainApp - ...开始初始化...
+2020-10-13 10:26:35.103 default [http-nio-6061-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-13 10:26:35.103 default [http-nio-6061-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-10-13 10:26:35.119 default [http-nio-6061-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 16 ms

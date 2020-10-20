@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.operlog.RecOperateinfoDao">
+    <resultMap id="RecOperateinfo" type="com.crims.apps.model.operlog.RecOperateinfo">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userid" jdbcType="VARCHAR" property="userid" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="operatedt" jdbcType="TIMESTAMP" property="operatedt" />
+        <result column="operatenodeid" jdbcType="VARCHAR" property="operatenodeid" />
+        <result column="operatenodename" jdbcType="VARCHAR" property="operatenodename" />
+        <result column="operateobjid" jdbcType="VARCHAR" property="operateobjid" />
+        <result column="operateobjname" jdbcType="VARCHAR" property="operateobjname" />
+        <result column="operateobjtype" jdbcType="VARCHAR" property="operateobjtype" />
+        <result column="operatety" jdbcType="VARCHAR" property="operatety" />
+        <result column="operatedsp" jdbcType="VARCHAR" property="operatedsp" />
+        <result column="nodeid" jdbcType="VARCHAR" property="nodeid" />
+        <result column="usercls" jdbcType="VARCHAR" property="usercls" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       userid, username, operatedt, operatenodeid, operatenodename, operateobjid, operateobjname,operateobjtype,operatety,operatedsp,nodeid,usercls
+    </sql>
+
+    <select id="getRecOperateinfo" parameterType="java.lang.String" resultMap="RecOperateinfo">
+        select
+        <include refid="Base_Column_List" />
+        from rec_operateinfo
+        where userid = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateRecOperateinfo" parameterType="com.crims.apps.model.operlog.RecOperateinfo">
+        update rec_operateinfo
+        set operatety = #{operatety,jdbcType=VARCHAR},
+            operatedt = #{operatedt,jdbcType=TIMESTAMP}
+        where userid = #{userid,jdbcType=VARCHAR}
+    </update>
+</mapper>

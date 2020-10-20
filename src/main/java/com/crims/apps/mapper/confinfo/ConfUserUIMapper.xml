@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfUserUIDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfUserUI">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="VARCHAR" property="userId" />
+    <result column="ITEM_VALUE" jdbcType="VARCHAR" property="item_value" />
+    <result column="usestate" jdbcType="VARCHAR" property="usestate" />
+    <result column="operateaction" jdbcType="VARCHAR" property="operateaction" />
+    <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+    <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+    <result column="lastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, ITEM_VALUE, usestate, operateaction, operateuserid, operateusername,lastModifyTime
+  </sql>
+
+  <sql id="Base_Column_List_user">
+    a.id, a.userid, a.ITEM_VALUE, a.usestate, a.operateaction, a.operateuserid, a.operateusername,a.lastModifyTime,b.username
+  </sql>
+
+   <select id="getConfUserUIList" parameterType="java.util.Map" resultMap="BaseResultMap">
+       SELECT
+       <include refid="Base_Column_List" />
+       FROM conf_user_ui
+       WHERE userid = #{userid}
+   </select>
+
+    <select id="getConfUserUIInfo" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List_user" />
+        FROM conf_user_ui a,conf_user b where a.userid = b.userid
+    </select>
+
+    <insert id="insertConfUserUI" parameterType="com.crims.apps.model.confinfo.ConfUserUI">
+        insert into conf_user_ui(userid,ITEM_VALUE,usestate, operateaction,operateuserid,operateusername,lastModifyTime)
+        values (#{userId,jdbcType=VARCHAR},#{item_value,jdbcType=VARCHAR},#{usestate,jdbcType=VARCHAR},
+            #{operateaction,jdbcType=VARCHAR}, #{operateuserid,jdbcType=VARCHAR}, #{operateusername,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updateConfUserUI" parameterType="com.crims.apps.model.confinfo.ConfUserUI">
+        update conf_user_ui
+        set usestate = #{usestate,jdbcType=VARCHAR},
+            operateaction = #{operateaction,jdbcType=VARCHAR},
+            lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteConfUserUI" parameterType="com.crims.apps.model.confinfo.ConfUserUI">
+        update conf_user_ui
+        set usestate = #{usestate,jdbcType=VARCHAR},
+            operateaction = #{operateaction,jdbcType=VARCHAR},
+            lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+</mapper>

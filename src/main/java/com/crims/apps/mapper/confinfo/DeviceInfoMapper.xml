@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.DeviceInfoDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.DeviceInfo">
+    <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    <result column="devicename" jdbcType="VARCHAR" property="devicename" />
+    <result column="groupname" jdbcType="VARCHAR" property="groupname" />
+    <result column="mappingdeviceid" jdbcType="VARCHAR" property="mappingdeviceid" />
+    <result column="deviceType" jdbcType="VARCHAR" property="deviceType" />
+    <result column="devicemtype" jdbcType="VARCHAR" property="devicemtype" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="factoryid" jdbcType="VARCHAR" property="factoryid" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="posex" jdbcType="INTEGER" property="posex" />
+    <result column="posey" jdbcType="INTEGER" property="posey" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="altitude" jdbcType="VARCHAR" property="altitude" />
+    <result column="isLockedXY" jdbcType="INTEGER" property="isLockedXY" />
+    <result column="mac" jdbcType="VARCHAR" property="mac" />
+    <result column="ipaddress" jdbcType="VARCHAR" property="ipaddress" />
+    <result column="subnetmask" jdbcType="VARCHAR" property="subnetmask" />
+    <result column="gateway" jdbcType="VARCHAR" property="gateway" />
+    <result column="lisport" jdbcType="INTEGER" property="lisport" />
+    <result column="channelnum" jdbcType="INTEGER" property="channelnum" />
+    <result column="dsp" jdbcType="VARCHAR" property="dsp" />
+    <result column="loginuser" jdbcType="VARCHAR" property="loginuser" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="softwarever" jdbcType="VARCHAR" property="softwarever" />
+    <result column="hardwarever" jdbcType="VARCHAR" property="hardwarever" />
+    <result column="managerprotocol" jdbcType="VARCHAR" property="managerprotocol" />
+    <result column="snmpversion" jdbcType="VARCHAR" property="snmpversion" />
+    <result column="snmpport" jdbcType="INTEGER" property="snmpport" />
+    <result column="snmptrapport" jdbcType="INTEGER" property="snmptrapport" />
+    <result column="readcommit" jdbcType="VARCHAR" property="readcommit" />
+    <result column="writecommit" jdbcType="VARCHAR" property="writecommit" />
+    <result column="alarmrate" jdbcType="VARCHAR" property="alarmrate" />
+    <result column="isenablesnmpproxy" jdbcType="INTEGER" property="isenablesnmpproxy" />
+    <result column="snmpproxyip" jdbcType="VARCHAR" property="snmpproxyip" />
+    <result column="systemid" jdbcType="INTEGER" property="systemid" />
+    <result column="systemoid" jdbcType="VARCHAR" property="systemoid" />
+    <result column="systemdesc" jdbcType="VARCHAR" property="systemdesc" />
+    <result column="snmpv3username" jdbcType="VARCHAR" property="snmpv3username" />
+    <result column="snmpv3securitylevel" jdbcType="INTEGER" property="snmpv3securitylevel" />
+    <result column="snmpv3authprotocol" jdbcType="VARCHAR" property="snmpv3authprotocol" />
+    <result column="snmpv3contextname" jdbcType="VARCHAR" property="snmpv3contextname" />
+    <result column="srcnodeid" jdbcType="VARCHAR" property="srcnodeid" />
+    <result column="mainstreamframerate" jdbcType="INTEGER" property="mainstreamframerate" />
+    <result column="mainstreamgop" jdbcType="INTEGER" property="mainstreamgop" />
+    <result column="usestate" jdbcType="INTEGER" property="usestate" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+    <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+    <result column="lastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="startcno" jdbcType="INTEGER" property="startcno" />
+    <result column="templatefilename" jdbcType="VARCHAR" property="templatefilename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+      deviceid, devicename, groupname, mappingdeviceid, deviceType, devicemtype,
+      version, factoryid, location, posex,posey,longitude,latitude,altitude,isLockedXY,
+      mac,ipaddress, subnetmask, gateway,lisport, channelnum, dsp, loginuser, password,
+      softwarever, hardwarever, managerprotocol,snmpversion,snmpport,readcommit,
+      writecommit,alarmrate,isenablesnmpproxy,snmpproxyip,systemid,systemoid,systemdesc,
+      snmpv3username,snmpv3securitylevel,snmpv3authprotocol,snmpv3contextname,srcnodeid, mainstreamframerate,
+      mainstreamgop, usestate,operateaction, operateuserid, operateusername,lastModifyTime,startcno,templatefilename,snmptrapport
+  </sql>
+  
+  <select id="getDeviceInfoList" resultMap="BaseResultMap">
+    select     
+    <include refid="Base_Column_List" />
+    from conf_device 
+  </select>
+
+    <select id="getDeviceInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from conf_device where deviceid = #{deviceid,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getDeviceInfoByDType" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List" />
+        from conf_device
+        <where>1=1
+            <if test="deviceType != null and deviceType != ''">
+                and deviceType = #{deviceType,jdbcType=VARCHAR}
+            </if>
+            <if test="nodeId != null and nodeId != ''">
+                and left(deviceid,6) =#{nodeId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+  <insert id="insertDeviceInfo" parameterType="com.crims.apps.model.confinfo.DeviceInfo">
+    insert into conf_device
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="deviceid != null">deviceid,</if><if test="devicename != null">devicename,</if><if test="groupname != null">groupname,</if><if test="mappingdeviceid != null">mappingdeviceid,</if><if test="deviceType != null">deviceType,</if>
+          <if test="devicemtype != null">devicemtype,</if><if test="version != null">version,</if><if test="factoryid != null">factoryid,</if><if test="location != null">location,</if><if test="posex != null">posex,</if>
+          <if test="posey != null">posey,</if><if test="longitude != null">longitude,</if><if test="latitude != null">latitude,</if><if test="altitude != null">altitude,</if><if test="isLockedXY != null">isLockedXY,</if>
+          <if test="mac != null">mac,</if><if test="ipaddress != null">ipaddress,</if><if test="subnetmask != null">subnetmask,</if><if test="gateway != null">gateway,</if><if test="lisport != null">lisport,</if>
+          <if test="channelnum != null">channelnum,</if><if test="dsp != null">dsp,</if><if test="loginuser != null">loginuser,</if><if test="password != null">password,</if><if test="softwarever != null">softwarever,</if><if test="snmptrapport != null">snmptrapport,</if>
+          <if test="hardwarever != null">hardwarever,</if><if test="managerprotocol != null">managerprotocol,</if><if test="snmpversion != null">snmpversion,</if><if test="snmpport != null">snmpport,</if><if test="readcommit != null">readcommit,</if>
+          <if test="writecommit != null">writecommit,</if><if test="alarmrate != null">alarmrate,</if><if test="isenablesnmpproxy != null">isenablesnmpproxy,</if><if test="snmpproxyip != null">snmpproxyip,</if><if test="systemid != null">systemid,</if>
+          <if test="systemoid != null">systemoid,</if><if test="systemdesc != null">systemdesc,</if><if test="snmpv3username != null">snmpv3username,</if><if test="snmpv3securitylevel != null">snmpv3securitylevel,</if><if test="snmpv3authprotocol != null">snmpv3authprotocol,</if>
+          <if test="snmpv3contextname != null">snmpv3contextname,</if><if test="srcnodeid != null">srcnodeid,</if><if test="mainstreamframerate != null">mainstreamframerate,</if><if test="mainstreamgop != null">mainstreamgop,</if><if test="usestate != null">usestate,</if>
+          <if test="operateaction != null">operateaction,</if><if test="operateuserid != null">operateuserid,</if><if test="operateusername != null">operateusername,</if><if test="lastModifyTime != null">lastModifyTime,</if><if test="startcno != null">startcno,</if><if test="templatefilename != null">templatefilename,</if>
+      </trim>
+      <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="deviceid != null">#{deviceid,jdbcType=VARCHAR},</if><if test="devicename != null">#{devicename,jdbcType=VARCHAR},</if><if test="groupname != null">#{groupname,jdbcType=VARCHAR},</if><if test="mappingdeviceid != null">#{mappingdeviceid,jdbcType=VARCHAR},</if><if test="deviceType != null">#{deviceType,jdbcType=VARCHAR},</if>
+          <if test="devicemtype != null">#{devicemtype,jdbcType=VARCHAR},</if><if test="version != null">#{version,jdbcType=VARCHAR},</if><if test="factoryid != null">#{factoryid,jdbcType=VARCHAR},</if><if test="location != null">#{location,jdbcType=VARCHAR},</if><if test="posex != null">#{posex,jdbcType=INTEGER},</if>
+          <if test="posey != null">#{posey,jdbcType=INTEGER},</if><if test="longitude != null">#{longitude,jdbcType=VARCHAR},</if><if test="latitude != null">#{latitude,jdbcType=VARCHAR},</if><if test="altitude != null">#{altitude,jdbcType=VARCHAR},</if><if test="isLockedXY != null">#{isLockedXY,jdbcType=INTEGER},</if>
+          <if test="mac != null">#{mac,jdbcType=VARCHAR},</if><if test="ipaddress != null">#{ipaddress,jdbcType=VARCHAR},</if><if test="subnetmask != null">#{subnetmask,jdbcType=VARCHAR},</if><if test="gateway != null">#{gateway,jdbcType=VARCHAR},</if><if test="lisport != null">#{lisport,jdbcType=INTEGER},</if>
+          <if test="channelnum != null">#{channelnum,jdbcType=INTEGER},</if><if test="dsp != null">#{dsp,jdbcType=VARCHAR},</if><if test="loginuser != null">#{loginuser,jdbcType=VARCHAR},</if><if test="password != null">#{password,jdbcType=VARCHAR},</if><if test="softwarever != null">#{softwarever,jdbcType=VARCHAR},</if><if test="snmptrapport != null">#{snmptrapport,jdbcType=INTEGER},</if>
+          <if test="hardwarever != null">#{hardwarever,jdbcType=VARCHAR},</if><if test="managerprotocol != null">#{managerprotocol,jdbcType=VARCHAR},</if><if test="snmpversion != null">#{snmpversion,jdbcType=VARCHAR},</if><if test="snmpport != null">#{snmpport,jdbcType=INTEGER},</if><if test="readcommit != null">#{readcommit,jdbcType=VARCHAR},</if>
+          <if test="writecommit != null">#{writecommit,jdbcType=VARCHAR},</if><if test="alarmrate != null">#{alarmrate,jdbcType=VARCHAR},</if><if test="isenablesnmpproxy != null">#{isenablesnmpproxy,jdbcType=INTEGER},</if><if test="snmpproxyip != null">#{snmpproxyip,jdbcType=VARCHAR},</if><if test="systemid != null">#{systemid,jdbcType=INTEGER},</if>
+          <if test="systemoid != null">#{systemoid,jdbcType=VARCHAR},</if><if test="systemdesc != null">#{systemdesc,jdbcType=VARCHAR},</if><if test="snmpv3username != null">#{snmpv3username,jdbcType=VARCHAR},</if><if test="snmpv3securitylevel != null">#{snmpv3securitylevel,jdbcType=INTEGER},</if><if test="snmpv3authprotocol != null">#{snmpv3authprotocol,jdbcType=VARCHAR},</if>
+          <if test="snmpv3contextname != null">#{snmpv3contextname,jdbcType=VARCHAR},</if><if test="srcnodeid != null">#{srcnodeid,jdbcType=VARCHAR},</if><if test="mainstreamframerate != null">#{mainstreamframerate,jdbcType=INTEGER},</if><if test="mainstreamgop != null">#{mainstreamgop,jdbcType=INTEGER},</if><if test="usestate != null">#{usestate,jdbcType=INTEGER},</if>
+          <if test="operateaction != null">#{operateaction,jdbcType=INTEGER},</if><if test="operateuserid != null">#{operateuserid,jdbcType=VARCHAR},</if><if test="operateusername != null">#{operateusername,jdbcType=VARCHAR},</if><if test="lastModifyTime != null">#{lastModifyTime,jdbcType=TIMESTAMP},</if><if test="startcno != null">#{startcno,jdbcType=INTEGER},</if>
+          <if test="templatefilename != null">#{templatefilename,jdbcType=VARCHAR},</if>
+      </trim>
+  </insert>
+
+  <update id="updateDeviceInfo" parameterType="com.crims.apps.model.confinfo.DeviceInfo">
+    update conf_device
+    <set>
+      <if test="devicename != null">devicename = #{devicename,jdbcType=VARCHAR},</if><if test="groupname != null">groupname = #{groupname,jdbcType=VARCHAR},</if><if test="mappingdeviceid != null">mappingdeviceid = #{mappingdeviceid,jdbcType=VARCHAR},</if><if test="deviceType != null">deviceType = #{deviceType,jdbcType=VARCHAR},</if>
+      <if test="devicemtype != null">devicemtype = #{devicemtype,jdbcType=VARCHAR},</if><if test="version != null">version = #{version,jdbcType=VARCHAR},</if><if test="factoryid != null">factoryid = #{factoryid,jdbcType=VARCHAR},</if><if test="location != null">location = #{location,jdbcType=VARCHAR},</if><if test="posex != null">posex = #{posex,jdbcType=INTEGER},</if>
+      <if test="posey != null">posey = #{posey,jdbcType=INTEGER},</if><if test="longitude != null">longitude = #{longitude,jdbcType=VARCHAR},</if><if test="latitude != null">latitude = #{latitude,jdbcType=VARCHAR},</if><if test="altitude != null">altitude = #{altitude,jdbcType=VARCHAR},</if><if test="isLockedXY != null">isLockedXY = #{isLockedXY,jdbcType=INTEGER},</if>
+      <if test="mac != null">mac = #{mac,jdbcType=VARCHAR},</if><if test="ipaddress != null">ipaddress = #{ipaddress,jdbcType=VARCHAR},</if><if test="subnetmask != null">subnetmask = #{subnetmask,jdbcType=VARCHAR},</if><if test="gateway != null">gateway = #{gateway,jdbcType=VARCHAR},</if><if test="lisport != null">lisport = #{lisport,jdbcType=INTEGER},</if><if test="snmptrapport != null">snmptrapport = #{snmptrapport,jdbcType=INTEGER},</if>
+      <if test="channelnum != null">channelnum = #{channelnum,jdbcType=INTEGER},</if><if test="dsp != null">dsp = #{dsp,jdbcType=VARCHAR},</if><if test="loginuser != null">loginuser = #{loginuser,jdbcType=VARCHAR},</if><if test="password != null">password = #{password,jdbcType=VARCHAR},</if><if test="softwarever != null">softwarever = #{softwarever,jdbcType=VARCHAR},</if>
+      <if test="hardwarever != null">hardwarever = #{hardwarever,jdbcType=VARCHAR},</if><if test="managerprotocol != null">managerprotocol = #{managerprotocol,jdbcType=VARCHAR},</if><if test="snmpversion != null">snmpversion = #{snmpversion,jdbcType=VARCHAR},</if><if test="snmpport != null">snmpport = #{snmpport,jdbcType=INTEGER},</if><if test="readcommit != null">readcommit = #{readcommit,jdbcType=VARCHAR},</if>
+      <if test="writecommit != null">writecommit = #{writecommit,jdbcType=VARCHAR},</if><if test="alarmrate != null">alarmrate = #{alarmrate,jdbcType=VARCHAR},</if><if test="isenablesnmpproxy != null">isenablesnmpproxy = #{isenablesnmpproxy,jdbcType=INTEGER},</if><if test="snmpproxyip != null">snmpproxyip = #{snmpproxyip,jdbcType=VARCHAR},</if><if test="systemid != null">systemid = #{systemid,jdbcType=INTEGER},</if>
+      <if test="systemoid != null">systemoid = #{systemoid,jdbcType=VARCHAR},</if><if test="systemdesc != null">systemdesc = #{systemdesc,jdbcType=VARCHAR},</if><if test="snmpv3username != null">snmpv3username = #{snmpv3username,jdbcType=VARCHAR},</if><if test="snmpv3securitylevel != null">snmpv3securitylevel = #{snmpv3securitylevel,jdbcType=INTEGER},</if><if test="snmpv3authprotocol != null">snmpv3authprotocol = #{snmpv3authprotocol,jdbcType=VARCHAR},</if>
+      <if test="snmpv3contextname != null">snmpv3contextname = #{snmpv3contextname,jdbcType=VARCHAR},</if><if test="srcnodeid != null">srcnodeid = #{srcnodeid,jdbcType=VARCHAR},</if><if test="mainstreamframerate != null">mainstreamframerate = #{mainstreamframerate,jdbcType=INTEGER},</if><if test="mainstreamgop != null">mainstreamgop = #{mainstreamgop,jdbcType=INTEGER},</if><if test="usestate != null">usestate = #{usestate,jdbcType=INTEGER},</if>
+      <if test="operateaction != null">operateaction = #{operateaction,jdbcType=INTEGER},</if><if test="operateuserid != null">operateuserid = #{operateuserid,jdbcType=VARCHAR},</if><if test="operateusername != null">operateusername = #{operateusername,jdbcType=VARCHAR},</if><if test="lastModifyTime != null">lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP},</if><if test="startcno != null">startcno = #{startcno,jdbcType=INTEGER}</if>
+      <if test="templatefilename != null">templatefilename = #{templatefilename,jdbcType=VARCHAR},</if>
+    </set>
+    where deviceid = #{deviceid,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteDeviceInfo" parameterType="com.crims.apps.model.confinfo.DeviceInfo">
+    update conf_device
+    set usestate = #{usestate,jdbcType=INTEGER},
+        operateaction = #{operateaction,jdbcType=INTEGER},
+        lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP}
+    where deviceid = #{deviceid,jdbcType=VARCHAR}
+  </delete>
+
+</mapper>

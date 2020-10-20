@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SNMPMIBs version="0100" flag="MDSnmpOidInfo" dsp="SNMP MIB库信息模板">
+	<items GroupSN="01" gcl="01" GroupName="环境信息" ItemNum="1">
+		<Indexs>
+			<Index>?</Index>
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="h3cEntityExtTemperature"          name="温度"     ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.12</OID>
+				<OID OIDSN="02" OIDDESC="h3cEntityExtTemperatureThreshold" name="温度阀值" ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.13</OID>
+			</OIDs>
+		</Indexs>
+		<item algorithm="0x000B0000" accuracy="0.1" TypeId="0x000D0201" name="温度" ValueType="0x00010B07"  unit="0x000A0201" MtType="0x00011001" ItemSN="01" alarmtype="0x07020100">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="h3cEntityExtTemperature" TypeId="0x000D0201" name="温度" ValueType="0x00010B07" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.12</OID>
+			</OIDs>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07020102">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07020102">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07020102">90-100</threshold>
+			</thresholds>
+		</item>
+	</items>
+	<items GroupSN="10" gcl="02" GroupName="内存信息" ItemNum="1">
+		<Indexs>
+			<Index>?</Index>
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="h3cEntityExtMemUsage"          name="内存使用率"     ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.8</OID>
+				<OID OIDSN="02" OIDDESC="h3cEntityExtMemUsageThreshold" name="内存使用率阀值" ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.9</OID>
+				<OID OIDSN="03" OIDDESC="h3cEntityExtMemSize"           name="内存大小"       ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.10</OID>
+			</OIDs>
+		</Indexs>
+		<item algorithm="0x000B0000" accuracy="0.1" TypeId="0x000D0302" name="内存占用率" ValueType="0x00010B07"  unit="0x000A0401" MtType="0x00011001" ItemSN="01" alarmtype="0x07020200">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="h3cEntityExtMemUsage" TypeId="0x000D0302" name="内存占用率" ValueType="0x00010B07" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.8</OID>
+			</OIDs>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010200">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010200">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010200">90-100</threshold>
+			</thresholds>
+		</item>
+	</items>
+	<items GroupSN="20" gcl="03" GroupName="CPU信息" ItemNum="1">
+		<Indexs>
+			<Index>?</Index>
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="h3cEntityExtCpuUsage"          name="CPU使用率"     ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.6</OID>
+				<OID OIDSN="02" OIDDESC="h3cEntityExtCpuUsageThreshold" name="CPU使用率阀值" ValueType="0x00010B07" index="-1">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.7</OID>
+			</OIDs>
+		</Indexs>
+		<item algorithm="0x000B0000" accuracy="0.1" TypeId="0x000D0301" name="CPU占用率" ValueType="0x00010B07" unit="0x000A0401" MtType="0x00011001" ItemSN="01" alarmtype="0x07010100">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="h3cEntityExtCpuUsage" TypeId="0x000D0301" name="CPU占用率" ValueType="0x00010B07" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.4.1.2011.10.2.6.1.1.1.1.6</OID>
+			</OIDs>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07010100">70-80</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07010100">80-90</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07010100">90-100</threshold>
+			</thresholds>
+		</item>
+	</items>
+	<items GroupSN="30" gcl="04" GroupName="端口信息" ItemNum="12">
+		<Indexs>
+			<Index>?</Index>
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifIndex" name="端口索引" ValueType="0x00010B05" index="-1">1.3.6.1.2.1.2.2.1.1</OID>
+				<OID OIDSN="02" OIDDESC="ifDesc"  name="端口描述" ValueType="0x00010B09" index="-1">1.3.6.1.2.1.2.2.1.2</OID>
+			</OIDs>
+		</Indexs>
+		<item algorithm="0x000B0101" accuracy="1" TypeId="0x000D0407" name="端口状态" ValueType="0x00010B04"  unit="" MtType="0x00011002" ItemSN="01"  alarmtype="0x07040100">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifAdminStatus" TypeId="0x000D0405" name="端口管理状态" ValueType="0x00010B03" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.7</OID>
+				<OID OIDSN="02" OIDDESC="ifOperStatus"  TypeId="0x000D0406" name="端口操作状态" ValueType="0x00010B03" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.8</OID>
+			</OIDs>
+			<ValueRule>
+				<Variables>
+					<Variable name="constant_1">10</Variable>
+				</Variables>
+				<LScript>GetValue("01") * GetValue("constant_1") + GetValue("02")</LScript>
+			</ValueRule>
+			<MaxValue>33</MaxValue>
+			<MinValue>11</MinValue>
+			<typedsps>
+				<valuedsp key="11">正常</valuedsp>
+				<valuedsp key="12">没接线</valuedsp>
+				<valuedsp key="13">测试</valuedsp>
+				<valuedsp key="21">故障</valuedsp>
+				<valuedsp key="22">故障</valuedsp>
+				<valuedsp key="23">故障</valuedsp>
+				<valuedsp key="31">正常</valuedsp>
+				<valuedsp key="32">故障</valuedsp>
+				<valuedsp key="33">测试</valuedsp>
+			</typedsps>
+		</item>
+		
+		<item algorithm="0x000B0000" accuracy="1" TypeId="0x000D0408" name="端口接收总字节数" ValueType="0x00010B08"  unit="0x000A0301" MtType="0x00011001" ItemSN="02">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifInOctets" TypeId="0x000D0408" name="端口接收总字节数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.10</OID>
+			</OIDs>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D0409" name="端口接收速率" ValueType="0x00010B07"  unit="0x000A0302" MtType="0x00011001" ItemSN="03">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifInOctets" TypeId="0x000D0408" name="端口接收总字节数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.10</OID>
+				<OID OIDSN="02" OIDDESC="sysUpTime"  TypeId="0x000D0410" name="运行时间"         ValueType="0x00010B08" IndexRelation="0x01" relativity="direct" index="0" formula="div">1.3.6.1.2.1.1.3</OID>
+			</OIDs>
+			<ValueRule>
+				<LScript>GetValue("01") / GetValue("02")</LScript>
+			</ValueRule>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.01" TypeId="0x000D040A"  name="端口接收丢包率" ValueType="0x00010B07"  unit="0x000A0401" MtType="0x00011001" ItemSN="04" alarmtype="0x07040300">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifInDiscards"   TypeId="0x000D0411" name="端口接收丢包数"     ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.13</OID>
+				<OID OIDSN="02" OIDDESC="ifInUcastPkts"  TypeId="0x000D0412" name="端口接收单播包数"   ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.11</OID>
+				<OID OIDSN="03" OIDDESC="ifInNUcastPkts" TypeId="0x000D0413" name="端口接收非单播包数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.12</OID>
+			</OIDs>
+			<ValueRule>
+				<LScript>GetValue("01") / (GetValue("02") + GetValue("03"))</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07040300">5-10</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07040300">10-20</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07040300">20-100</threshold>
+			</thresholds>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.01" TypeId="0x000D040B" name="端口接收错包率" ValueType="0x00010B07"  unit="0x000A0401" MtType="0x00011001" ItemSN="05" alarmtype="0x07040400">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifInErrors"     TypeId="0x000D0414" name="端口接收错包数"     ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.14</OID>
+				<OID OIDSN="02" OIDDESC="ifInUcastPkts"  TypeId="0x000D0412" name="端口接收单播包数"   ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.11</OID>
+				<OID OIDSN="03" OIDDESC="ifInNUcastPkts" TypeId="0x000D0413" name="端口接收非单播包数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.12</OID>
+			</OIDs>
+			<ValueRule>
+				<LScript>GetValue("01") / (GetValue("02") + GetValue("03"))</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07040400">5-10</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07040400">10-20</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07040400">20-100</threshold>
+			</thresholds>
+		</item>
+		<item algorithm="0x000B0000" accuracy="1" TypeId="0x000D040C" name="端口发送总字节数" ValueType="0x00010B08"  unit="0x000A0301" MtType="0x00011001" ItemSN="06">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifOutOctets" TypeId="0x000D0408" name="端口发送总字节数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.16</OID>
+			</OIDs>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.1" TypeId="0x000D040D" name="端口发送速率" ValueType="0x00010B07"  unit="0x000A0302" MtType="0x00011001" ItemSN="07">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifOutOctets" TypeId="0x000D0408" name="端口发送总字节数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.16</OID>
+				<OID OIDSN="02" OIDDESC="sysUpTime"  TypeId="0x000D0410" name="运行时间"           ValueType="0x00010B08" IndexRelation="0x01" relativity="direct" index="0" formula="div">1.3.6.1.2.1.1.3</OID>
+			</OIDs>
+			<ValueRule>
+				<LScript>GetValue("01") / GetValue("02")</LScript>
+			</ValueRule>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.01" TypeId="0x000D040E"  name="端口发送丢包率" ValueType="0x00010B07"  unit="0x000A0401" MtType="0x00011001" ItemSN="08" alarmtype="0x07040300">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifOutDiscards"   TypeId="0x000D0411" name="端口发送丢包数"     ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.19</OID>
+				<OID OIDSN="02" OIDDESC="ifOutUcastPkts"  TypeId="0x000D0412" name="端口发送单播包数"   ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.17</OID>
+				<OID OIDSN="03" OIDDESC="ifOutNUcastPkts" TypeId="0x000D0413" name="端口发送非单播包数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.18</OID>
+			</OIDs>
+			<ValueRule>
+				<LScript>GetValue("01") / (GetValue("02") + GetValue("03"))</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07040300">5-10</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07040300">10-20</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07040300">20-100</threshold>
+			</thresholds>
+		</item>
+		<item algorithm="0x000B0101" accuracy="0.01" TypeId="0x000D040F" name="端口发送错包率" ValueType="0x00010B07"  unit="0x000A0401" MtType="0x00011001" ItemSN="09" alarmtype="0x07040400">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifOutErrors"     TypeId="0x000D0414" name="端口发送错包数"     ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.20</OID>
+				<OID OIDSN="02" OIDDESC="ifOutUcastPkts"  TypeId="0x000D0412" name="端口发送单播包数"   ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.17</OID>
+				<OID OIDSN="03" OIDDESC="ifOutNUcastPkts" TypeId="0x000D0413" name="端口发送非单播包数" ValueType="0x00010B08" IndexRelation="0x02" relativity="direct" index="-1" formula="div">1.3.6.1.2.1.2.2.1.18</OID>
+			</OIDs>
+			<ValueRule>
+				<LScript>GetValue("01") / (GetValue("02") + GetValue("03"))</LScript>
+			</ValueRule>
+			<MaxValue>100</MaxValue>
+			<MinValue>0</MinValue>
+			<thresholds>
+				<threshold level="0x00030302" DelayTime="5" alarmtype="0x07040400">5-10</threshold>
+				<threshold level="0x00030303" DelayTime="5" alarmtype="0x07040400">10-20</threshold>
+				<threshold level="0x00030304" DelayTime="5" alarmtype="0x07040400">20-100</threshold>
+			</thresholds>
+		</item>
+		<item algorithm="0x000B0000" accuracy="1" TypeId="0x000D0401" name="端口类型" ValueType="0x00010B04"  unit="" MtType="0x00011002" ItemSN="0A">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifType" TypeId="0x000D0401" name="端口类型" ValueType="0x00010B04" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.3</OID>
+			</OIDs>
+			<typedsps>
+				<valuedsp key="0">None</valuedsp>
+				<valuedsp key="1">other</valuedsp>
+				<valuedsp key="2">regular1822</valuedsp>
+				<valuedsp key="3">hdh1822</valuedsp>
+				<valuedsp key="4">ddnX25</valuedsp>
+				<valuedsp key="5">rfc877x25</valuedsp>
+				<valuedsp key="6">ethernetCsmacd</valuedsp>
+				<valuedsp key="7">iso88023Csmacd</valuedsp>
+				<valuedsp key="8">iso88024TokenBus</valuedsp>
+				<valuedsp key="9">iso88025TokenRing</valuedsp>
+				<valuedsp key="10">iso88026Man</valuedsp>
+				<valuedsp key="11">starLan</valuedsp>
+				<valuedsp key="12">proteon10Mbit</valuedsp>
+				<valuedsp key="13">proteon80Mbit</valuedsp>
+				<valuedsp key="14">hyperchannel</valuedsp>
+				<valuedsp key="15">fddi</valuedsp>
+				<valuedsp key="16">lapb</valuedsp>
+				<valuedsp key="17">sdlc</valuedsp>
+				<valuedsp key="18">ds1</valuedsp>
+				<valuedsp key="19">e1</valuedsp>
+				<valuedsp key="20">basicISDN</valuedsp>
+				<valuedsp key="21">primaryISDN</valuedsp>
+				<valuedsp key="22">propPointToPointSerial</valuedsp>
+				<valuedsp key="23">ppp</valuedsp>
+				<valuedsp key="24">softwareLoopback</valuedsp>
+				<valuedsp key="25">eon</valuedsp>
+				<valuedsp key="26">ethernet3Mbit</valuedsp>
+				<valuedsp key="27">nsip</valuedsp>
+				<valuedsp key="28">slip</valuedsp>
+				<valuedsp key="29">ultra</valuedsp>
+				<valuedsp key="30">ds3</valuedsp>
+				<valuedsp key="31">sip</valuedsp>
+				<valuedsp key="32">frameRelay</valuedsp>
+				<valuedsp key="33">rs232</valuedsp>
+				<valuedsp key="34">para</valuedsp>
+				<valuedsp key="35">arcnet</valuedsp>
+				<valuedsp key="36">arcnetPlus</valuedsp>
+				<valuedsp key="37">atm</valuedsp>
+				<valuedsp key="38">miox25</valuedsp>
+				<valuedsp key="39">sonet</valuedsp>
+				<valuedsp key="40">x25ple</valuedsp>
+				<valuedsp key="41">iso88022llc</valuedsp>
+				<valuedsp key="42">localTalk</valuedsp>
+				<valuedsp key="43">smdsDxi</valuedsp>
+				<valuedsp key="44">frameRelayService</valuedsp>
+				<valuedsp key="45">v35</valuedsp>
+				<valuedsp key="46">hssi</valuedsp>
+				<valuedsp key="47">hippi</valuedsp>
+				<valuedsp key="48">modem</valuedsp>
+				<valuedsp key="49">aal5</valuedsp>
+				<valuedsp key="50">sonetPath</valuedsp>
+				<valuedsp key="51">sonetVT</valuedsp>
+				<valuedsp key="52">smdsIcip</valuedsp>
+				<valuedsp key="53">propVirtual</valuedsp>
+				<valuedsp key="54">propMultiplexor</valuedsp>
+				<valuedsp key="55">ieee80212</valuedsp>
+				<valuedsp key="56">fibreChannel</valuedsp>
+				<valuedsp key="57">hippiInterface</valuedsp>
+				<valuedsp key="58">frameRelayInterconnect</valuedsp>
+				<valuedsp key="59">aflane8023</valuedsp>
+				<valuedsp key="60">aflane8025</valuedsp>
+				<valuedsp key="61">cctEmul</valuedsp>
+				<valuedsp key="62">fastEther</valuedsp>
+				<valuedsp key="63">isdn</valuedsp>
+				<valuedsp key="64">v11</valuedsp>
+				<valuedsp key="65">v36</valuedsp>
+				<valuedsp key="66">g703at64k</valuedsp>
+				<valuedsp key="67">g703at2mb</valuedsp>
+				<valuedsp key="68">qllc</valuedsp>
+				<valuedsp key="69">fastEtherFX</valuedsp>
+				<valuedsp key="70">channel</valuedsp>
+				<valuedsp key="71">ieee80211</valuedsp>
+				<valuedsp key="72">ibm370parChan</valuedsp>
+				<valuedsp key="73">escon</valuedsp>
+				<valuedsp key="74">dlsw</valuedsp>
+				<valuedsp key="75">isdns</valuedsp>
+				<valuedsp key="76">isdnu</valuedsp>
+				<valuedsp key="77">lapd</valuedsp>
+				<valuedsp key="78">ipSwitch</valuedsp>
+				<valuedsp key="79">rsrb</valuedsp>
+				<valuedsp key="80">atmLogical</valuedsp>
+				<valuedsp key="81">ds0</valuedsp>
+				<valuedsp key="82">ds0Bundle</valuedsp>
+				<valuedsp key="83">bsc</valuedsp>
+				<valuedsp key="84">async</valuedsp>
+				<valuedsp key="85">cnr</valuedsp>
+				<valuedsp key="86">iso88025Dtr</valuedsp>
+				<valuedsp key="87">eplrs</valuedsp>
+				<valuedsp key="88">arap</valuedsp>
+				<valuedsp key="89">propCnls</valuedsp>
+				<valuedsp key="90">hostPad</valuedsp>
+				<valuedsp key="91">termPad</valuedsp>
+				<valuedsp key="92">frameRelayMPI</valuedsp>
+				<valuedsp key="93">x213</valuedsp>
+				<valuedsp key="94">adsl</valuedsp>
+				<valuedsp key="95">radsl</valuedsp>
+				<valuedsp key="96">sdsl</valuedsp>
+				<valuedsp key="97">vdsl</valuedsp>
+				<valuedsp key="98">iso88025CRFPInt</valuedsp>
+				<valuedsp key="99">myrinet</valuedsp>
+				<valuedsp key="100">voiceEM</valuedsp>
+				<valuedsp key="101">voiceFXO</valuedsp>
+				<valuedsp key="102">voiceFXS</valuedsp>
+				<valuedsp key="103">voiceEncap</valuedsp>
+				<valuedsp key="104">voiceOverIp</valuedsp>
+				<valuedsp key="105">atmDxi</valuedsp>
+				<valuedsp key="106">atmFuni</valuedsp>
+				<valuedsp key="107">atmIma</valuedsp>
+				<valuedsp key="108">pppMultilinkBundle</valuedsp>
+				<valuedsp key="109">ipOverCdlc</valuedsp>
+				<valuedsp key="110">ipOverClaw</valuedsp>
+				<valuedsp key="111">stackToStack</valuedsp>
+				<valuedsp key="112">virtualIpAddress</valuedsp>
+				<valuedsp key="113">mpc</valuedsp>
+				<valuedsp key="114">ipOverAtm</valuedsp>
+				<valuedsp key="115">iso88025Fiber</valuedsp>
+				<valuedsp key="116">tdlc</valuedsp>
+				<valuedsp key="117">gigabitEthernet</valuedsp>
+				<valuedsp key="118">hdlc</valuedsp>
+				<valuedsp key="119">lapf</valuedsp>
+				<valuedsp key="120">v37</valuedsp>
+				<valuedsp key="121">x25mlp</valuedsp>
+				<valuedsp key="122">x25huntGroup</valuedsp>
+				<valuedsp key="123">trasnpHdlc</valuedsp>
+				<valuedsp key="124">interleave</valuedsp>
+				<valuedsp key="125">fast</valuedsp>
+				<valuedsp key="126">ip</valuedsp>
+				<valuedsp key="127">docsCableMaclayer</valuedsp>
+				<valuedsp key="128">docsCableDownstream</valuedsp>
+				<valuedsp key="129">docsCableUpstream</valuedsp>
+				<valuedsp key="130">a12MppSwitch</valuedsp>
+				<valuedsp key="131">tunnel</valuedsp>
+				<valuedsp key="132">coffee</valuedsp>
+				<valuedsp key="133">ces</valuedsp>
+				<valuedsp key="134">atmSubInterface</valuedsp>
+				<valuedsp key="135">l2vlan</valuedsp>
+				<valuedsp key="136">l3ipvlan</valuedsp>
+				<valuedsp key="137">l3ipxvlan</valuedsp>
+				<valuedsp key="138">digitalPowerline</valuedsp>
+				<valuedsp key="139">mediaMailOverIp</valuedsp>
+				<valuedsp key="140">dtm</valuedsp>
+				<valuedsp key="141">dcn</valuedsp>
+				<valuedsp key="142">ipForward</valuedsp>
+				<valuedsp key="143">msdsl</valuedsp>
+				<valuedsp key="144">ieee1394</valuedsp>
+				<valuedsp key="145">if-gsn</valuedsp>
+				<valuedsp key="146">dvbRccMacLayer</valuedsp>
+				<valuedsp key="147">dvbRccDownstream</valuedsp>
+				<valuedsp key="148">dvbRccUpstream</valuedsp>
+				<valuedsp key="149">atmVirtual</valuedsp>
+				<valuedsp key="150">mplsTunnel</valuedsp>
+				<valuedsp key="151">srp</valuedsp>
+			</typedsps>
+		</item>
+		<item algorithm="0x000B0101" accuracy="1" TypeId="0x000D0402" name="端口带宽" ValueType="0x00010B04"  unit="0x000A0302" MtType="0x00011001" ItemSN="0B">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifSpeed" TypeId="0x000D0402" name="端口带宽" ValueType="0x00010B04" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.5</OID>
+			</OIDs>
+			<ValueRule>
+			<Variables>
+				<Variable name="constant_1">1000</Variable>
+				</Variables>
+				<LScript>GetValue("01") / GetValue("constant_1")</LScript>
+			</ValueRule>
+		</item>
+		<item algorithm="0x000B0000" accuracy="1" TypeId="0x000D0403" name="端口MAC" ValueType="0x00010B09"  unit="" MtType="0x00011001" ItemSN="0C">
+			<OIDs>
+				<OID OIDSN="01" OIDDESC="ifPhysAddress" TypeId="0x000D0403" name="端口MAC" ValueType="0x00010B09" IndexRelation="0x02" relativity="direct" index="-1" formula="single">1.3.6.1.2.1.2.2.1.6</OID>
+			</OIDs>
+		</item>
+	</items>
+</SNMPMIBs>

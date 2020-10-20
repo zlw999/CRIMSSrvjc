@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.knowledge.ConfKnowledgeDao">
+<select id="findAll" parameterType="com.crims.apps.model.knowledge.ConfKnowledge" resultType="com.crims.apps.model.knowledge.ConfKnowledge">
+    select * from conf_knowledge
+    <where>
+    <if test="title !=null">
+      and title like '%${title}%'
+    </if>
+    <if test="label !=null">
+        and  label = #{label}
+    </if>
+    </where>
+</select>
+    <insert id="saveConfKnowledge" parameterType="com.crims.apps.model.knowledge.ConfKnowledge">
+        INSERT INTO conf_knowledge(`indexno`, `title`, `devicetype`, `faulttype`, `faultdsp`, `faultreason`, `solution`, `hasDoc`,`createuser`,`reviewstatus`,`label`)
+        VALUES (#{indexno},#{title},#{devicetype},#{faulttype},#{faultdsp},#{faultreason},#{solution},#{hasDoc},#{createuser},#{reviewstatus},#{label})
+    </insert>
+   <!-- <insert id="saveConfKnowledge" parameterType="ConfKnowledge">
+        INSERT INTO conf_knowledge(`indexno`, `title`, `devicetype`, `faulttype`, `faultdsp`, `faultreason`, `solution`, `hasDoc`, `createuserid`, `createuser`, `createtime`, `reviewuserid`, `reviewuser`, `reviewtime`, `reviewstatus`, `reviewdsp`, `validstatus`, `label`, `usenum`)
+        VALUES (#{indexno},#{title},#{devicetype},#{faulttype},#{faultdsp},#{faultreason},#{solution},#{hasDoc},#{createuserid},#{createuser},#{createtime},#{reviewuserid},#{reviewuser},#{reviewtime},#{reviewstatus},#{reviewdsp},#{validstatus},#{label},#{usenum})
+    </insert>-->
+    <delete id="deleteConfKnowledge" parameterType="com.crims.apps.model.knowledge.ConfKnowledge">
+        delete from conf_knowledge where indexno=#{indexno}
+    </delete>
+    <select id="findConfKnowledgeByIndexno" parameterType="com.crims.apps.model.knowledge.ConfKnowledge" resultType="com.crims.apps.model.knowledge.ConfKnowledge">
+         select * from conf_knowledge where indexno=#{indexno}
+    </select>
+    <update id="updateConfKnowledge" parameterType="com.crims.apps.model.knowledge.ConfKnowledge">
+        UPDATE conf_knowledge SET `title` = #{title}, `devicetype` = #{devicetype}, `faulttype` = #{faulttype}, `faultdsp` = #{faultdsp}, `faultreason` = #{faultreason}, `solution` = #{solution}, `hasDoc` = #{hasDoc}, `createuserid` = #{createuserid}, `createuser` = #{createuser},
+        `createtime` = #{createtime}, `reviewuserid` = #{reviewuserid}, `reviewuser` = #{reviewuser}, `reviewtime` = #{reviewtime}, `reviewstatus` = #{reviewstatus}, `reviewdsp` = #{reviewdsp}, `validstatus` = #{validstatus}, `label` = #{label}, `usenum` = #{usenum} WHERE `indexno` = #{indexno};
+
+    </update>
+    <update id="shenheConfKnowledge" parameterType="com.crims.apps.model.knowledge.ConfKnowledge">
+         UPDATE conf_knowledge SET  `reviewuserid` = #{reviewuserid}, `reviewuser` = #{reviewuser}, `reviewtime` = #{reviewtime}, `reviewstatus` = #{reviewstatus}, `reviewdsp` = #{reviewdsp} WHERE `indexno` = #{indexno};
+    </update>
+</mapper>

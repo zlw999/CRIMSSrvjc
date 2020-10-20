@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfSrvDeviceDao">
+    <resultMap id="ConfSrvDevice" type="com.crims.apps.model.confinfo.ConfSrvDevice">
+        <result column="srvnodeid" jdbcType="VARCHAR" property="srvnodeid" />
+        <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       srvnodeid,deviceid
+    </sql>
+
+    <select id="getConfSrvDeviceInfo" resultType="java.util.Map" parameterType="java.lang.String">
+        select a.srvnodeid,a.deviceid,b.devicename
+        from conf_srv_device a,conf_device b where a.deviceid = b.deviceid and a.srvnodeid = #{srvnodeid,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertConfSrvDevice" parameterType="java.util.List">
+        insert into conf_srv_device (srvnodeid, deviceid)
+        values <foreach collection="list" index="index" item="item" separator=",">
+        (#{item.srvnodeid,jdbcType=VARCHAR}, #{item.deviceid,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+
+    <delete id="deleteConfSrvDeviceInfo">
+        delete from conf_srv_device
+    </delete>
+
+</mapper>

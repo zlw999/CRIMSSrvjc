@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.user.UserDao">
+
+    <select id="findAll" parameterType="com.crims.apps.model.user.ConfUser" resultType="com.crims.apps.model.user.ConfUser">
+        select u.userid,u.username,u.ip,u.usercls,u.lastModifyTime,o.onlinestatu from conf_user u,conf_user_online o
+        <where> u.userid=o.userid
+            <if test="username!=null and username!=''">
+                and u.username=#{username}
+            </if>
+            <if test="ip!=null and ip!=''">
+                and replace(u.ip,".","") like '%${ip}%'
+            </if>
+            <if test="usercls!=null and usercls!=''">
+                and u.usercls=#{usercls}
+            </if>
+            <if test="onlinestatu!=null and onlinestatu!=''">
+                and o.onlinestatu=#{onlinestatu}
+            </if>
+            <if test="did!=null and did!=''">
+                and u.userid like '${did}%'
+            </if>
+        </where>
+    </select>
+</mapper>

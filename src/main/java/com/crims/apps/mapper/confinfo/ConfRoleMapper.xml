@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.RoleInfoDao">
+    <resultMap id="ConfRole" type="com.crims.apps.model.confinfo.ConfRole">
+        <result column="roleid" jdbcType="VARCHAR" property="roleid" />
+        <result column="rolename" jdbcType="VARCHAR" property="rolename" />
+        <result column="maxcontlchnel" jdbcType="INTEGER" property="maxcontlchnel" />
+        <result column="onlinecontrl" jdbcType="INTEGER" property="onlinecontrl" />
+        <result column="operateright" jdbcType="VARCHAR" property="operateright" />
+        <result column="usestate" jdbcType="INTEGER" property="usestate" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+        <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+        <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       roleid, rolename, maxcontlchnel, onlinecontrl, operateright, usestate, operateaction,operateuserid,operateusername,lastmodifytime
+    </sql>
+
+    <select id="getRoleInfoList" resultMap="ConfRole">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_role ORDER BY roleid DESC
+    </select>
+
+    <select id="getAll" parameterType="java.lang.String" resultMap="ConfRole">
+        select
+        <include refid="Base_Column_List" />
+        from conf_role
+        where rolename like  #{roleName,jdbcType=VARCHAR}  ORDER BY roleid DESC
+    </select>
+
+    <insert id="insertConfRole" parameterType="com.crims.apps.model.confinfo.ConfRole">
+        insert into conf_role(roleid, rolename, maxcontlchnel,onlinecontrl, operateright,
+                usestate,operateaction,operateuserid,operateusername,lastmodifytime)
+        values (#{roleid,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, #{maxcontlchnel,jdbcType=INTEGER},
+          #{onlinecontrl,jdbcType=INTEGER}, #{operateright,jdbcType=VARCHAR}, #{usestate,jdbcType=INTEGER},
+          #{operateaction,jdbcType=INTEGER}, #{operateuserid,jdbcType=VARCHAR}, #{operateusername,jdbcType=VARCHAR},#{lastmodifytime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updateConfRole" parameterType="com.crims.apps.model.confinfo.ConfRole">
+        update conf_role
+        set rolename = #{rolename,jdbcType=VARCHAR},
+            maxcontlchnel = #{maxcontlchnel,jdbcType=INTEGER},
+            usestate = #{usestate,jdbcType=INTEGER},
+            operateaction = #{operateaction,jdbcType=INTEGER},
+            operateright = #{operateright,jdbcType=VARCHAR},
+            lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+        where roleid = #{roleid,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteConfRole" parameterType="com.crims.apps.model.confinfo.ConfRole">
+        update conf_role
+        set operateaction = #{operateaction,jdbcType=INTEGER},
+            usestate = #{usestate,jdbcType=INTEGER},
+            lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+        where roleid = #{roleid,jdbcType=VARCHAR}
+    </delete>
+
+    <select id="getRoleInfoByNodeID" parameterType="java.lang.String" resultType="java.lang.String">
+        select roleid from conf_role
+        where roleid like concat('%',#{roleid,jdbcType = VARCHAR},'%') ORDER BY roleid DESC
+    </select>
+</mapper>

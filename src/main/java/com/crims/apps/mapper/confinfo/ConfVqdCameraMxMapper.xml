@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVqdCameraMxDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVqdCameraMx">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    <result column="analysetype" jdbcType="VARCHAR" property="analysetype" />
+    <result column="UpValue" jdbcType="DOUBLE" property="upvalue" />
+    <result column="DownValue" jdbcType="DOUBLE" property="downvalue" />
+    <result column="AlarmLevel" jdbcType="VARCHAR" property="alarmlevel" />
+    <result column="usestate" jdbcType="INTEGER" property="usestate" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, deviceid, analysetype, UpValue, DownValue, AlarmLevel, usestate, operateaction, lastmodifytime
+  </sql>
+
+  <select id="getALL" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from conf_vqd_camera_mx order by cast(deviceid as UNSIGNED) asc,lastmodifytime desc
+  </select>
+
+  <insert id="insertConfVqdCameraMxInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraMx">
+    insert into conf_vqd_camera_mx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceid != null">
+        deviceid,
+      </if>
+      <if test="analysetype != null">
+        analysetype,
+      </if>
+      <if test="upvalue != null">
+        UpValue,
+      </if>
+      <if test="downvalue != null">
+        DownValue,
+      </if>
+      <if test="alarmlevel != null">
+        AlarmLevel,
+      </if>
+      <if test="usestate != null">
+        usestate,
+      </if>
+      <if test="operateaction != null">
+        operateaction,
+      </if>
+      <if test="lastmodifytime != null">
+        lastmodifytime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceid != null">
+        #{deviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="analysetype != null">
+        #{analysetype,jdbcType=VARCHAR},
+      </if>
+      <if test="upvalue != null">
+        #{upvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="downvalue != null">
+        #{downvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="alarmlevel != null">
+        #{alarmlevel,jdbcType=VARCHAR},
+      </if>
+      <if test="usestate != null">
+        #{usestate,jdbcType=INTEGER},
+      </if>
+      <if test="operateaction != null">
+        #{operateaction,jdbcType=INTEGER},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateConfVqdCameraMxInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraMx">
+    update conf_vqd_camera_mx
+    <set>
+        <if test="deviceid != null">
+            deviceid = #{deviceid,jdbcType=VARCHAR},
+        </if>
+        <if test="analysetype != null">
+            analysetype = #{analysetype,jdbcType=VARCHAR},
+        </if>
+        <if test="upvalue != null">
+            UpValue = #{upvalue,jdbcType=DOUBLE},
+        </if>
+        <if test="downvalue != null">
+            DownValue = #{downvalue,jdbcType=DOUBLE},
+        </if>
+        <if test="alarmlevel != null">
+            AlarmLevel = #{alarmlevel,jdbcType=VARCHAR},
+        </if>
+        <if test="usestate != null">
+            usestate = #{usestate,jdbcType=INTEGER},
+        </if>
+        <if test="operateaction != null">
+            operateaction = #{operateaction,jdbcType=INTEGER},
+        </if>
+        <if test="lastmodifytime != null">
+            lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP},
+        </if>
+    </set>
+     where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteConfVqdCameraMxInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraMx">
+    update conf_vqd_camera_mx
+    set operateaction = #{operateaction,jdbcType=INTEGER},
+        usestate = #{usestate,jdbcType=INTEGER},
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+</mapper>

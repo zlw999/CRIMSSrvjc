@@ -1,0 +1,100 @@
+2020-10-12 17:37:54.631 default [http-nio-6061-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/nodeconf/getALL", parameters={}
+2020-10-12 17:37:54.636 default [http-nio-6061-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.util.List<com.crims.apps.model.confinfo.ConfNode> com.crims.apps.controller.node.NodeConfController.getALL()
+2020-10-12 17:37:54.637 default [http-nio-6061-exec-7] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:37:54.637 default [http-nio-6061-exec-7] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22b8ba08] was not registered for synchronization because synchronization is not active
+2020-10-12 17:37:54.637 default [http-nio-6061-exec-7] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:37:54.637 default [http-nio-6061-exec-7] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:37:54.637 default [http-nio-6061-exec-7] DEBUG c.c.a.d.confinfo.NodeConfDao.getALL - ==>  Preparing: SELECT nodeid, nodename, usestate, operateaction, operateuserid, operateusername, lastmodifytime FROM conf_nodearea ORDER BY nodeid DESC 
+2020-10-12 17:37:54.638 default [http-nio-6061-exec-7] DEBUG c.c.a.d.confinfo.NodeConfDao.getALL - ==> Parameters: 
+2020-10-12 17:37:54.642 default [http-nio-6061-exec-7] DEBUG c.c.a.d.confinfo.NodeConfDao.getALL - <==      Total: 47
+2020-10-12 17:37:54.642 default [http-nio-6061-exec-7] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@22b8ba08]
+2020-10-12 17:37:54.642 default [http-nio-6061-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-10-12 17:37:54.642 default [http-nio-6061-exec-7] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [[com.crims.apps.model.confinfo.ConfNode@774492b3, com.crims.apps.model.confinfo.ConfNode@4b693648, c (truncated)...]
+2020-10-12 17:37:54.643 default [http-nio-6061-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2020-10-12 17:37:54.740 default [http-nio-6061-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/userLogin/getConfUserList", parameters={}
+2020-10-12 17:37:54.740 default [http-nio-6061-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.util.List<com.crims.apps.model.confinfo.ConfUserInfo> com.crims.apps.controller.user.ConfUserController.getConfUserList()
+2020-10-12 17:37:54.740 default [http-nio-6061-exec-9] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:37:54.741 default [http-nio-6061-exec-9] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1e8414ae] was not registered for synchronization because synchronization is not active
+2020-10-12 17:37:54.741 default [http-nio-6061-exec-9] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:37:54.741 default [http-nio-6061-exec-9] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:37:54.741 default [http-nio-6061-exec-9] DEBUG c.c.a.d.c.C.getConfUserList - ==>  Preparing: SELECT roleid, userid, username, password, priorlevel, unitid, position, telephone, mobile, address, usestate, operateaction, operateuserid,operateusername, lastModifyTime,ip FROM conf_user ORDER BY userid DESC 
+2020-10-12 17:37:54.741 default [http-nio-6061-exec-9] DEBUG c.c.a.d.c.C.getConfUserList - ==> Parameters: 
+2020-10-12 17:37:54.748 default [http-nio-6061-exec-9] DEBUG c.c.a.d.c.C.getConfUserList - <==      Total: 6
+2020-10-12 17:37:54.748 default [http-nio-6061-exec-9] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1e8414ae]
+2020-10-12 17:37:54.749 default [http-nio-6061-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-10-12 17:37:54.749 default [http-nio-6061-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [[com.crims.apps.model.confinfo.ConfUserInfo@549b74a6, com.crims.apps.model.confinfo.ConfUserInfo@93b (truncated)...]
+2020-10-12 17:37:54.749 default [http-nio-6061-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2020-10-12 17:37:54.781 default [http-nio-6061-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/userLogin/getAll?userName=&currentPage=1&pageSize=10&loginUserID=0102003010019801&loginUserName=1", parameters={masked}
+2020-10-12 17:37:54.782 default [http-nio-6061-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public com.github.pagehelper.PageInfo<com.crims.apps.model.confinfo.ConfUserInfo> com.crims.apps.controller.user.ConfUserController.getAll(java.lang.String,java.lang.String,java.lang.String,int,int)
+2020-10-12 17:37:54.782 default [http-nio-6061-exec-8] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:37:54.782 default [http-nio-6061-exec-8] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7df892fa] was not registered for synchronization because synchronization is not active
+2020-10-12 17:37:54.783 default [http-nio-6061-exec-8] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:37:54.783 default [http-nio-6061-exec-8] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:37:54.783 default [http-nio-6061-exec-8] DEBUG c.c.a.d.c.ConfUserDao.getAll_COUNT - ==>  Preparing: SELECT count(0) FROM conf_user WHERE username LIKE ? 
+2020-10-12 17:37:54.783 default [http-nio-6061-exec-8] DEBUG c.c.a.d.c.ConfUserDao.getAll_COUNT - ==> Parameters: %%(String)
+2020-10-12 17:37:54.785 default [http-nio-6061-exec-8] DEBUG c.c.a.d.c.ConfUserDao.getAll_COUNT - <==      Total: 1
+2020-10-12 17:37:54.786 default [http-nio-6061-exec-8] DEBUG c.c.a.d.confinfo.ConfUserDao.getAll - ==>  Preparing: select roleid, userid, username, password, priorlevel, unitid, position, telephone, mobile, address, usestate, operateaction, operateuserid,operateusername, lastModifyTime,ip from conf_user where username like ? ORDER BY userid DESC LIMIT ? 
+2020-10-12 17:37:54.786 default [http-nio-6061-exec-8] DEBUG c.c.a.d.confinfo.ConfUserDao.getAll - ==> Parameters: %%(String), 10(Integer)
+2020-10-12 17:37:54.788 default [http-nio-6061-exec-8] DEBUG c.c.a.d.confinfo.ConfUserDao.getAll - <==      Total: 6
+2020-10-12 17:37:54.789 default [http-nio-6061-exec-8] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7df892fa]
+2020-10-12 17:37:54.789 default [http-nio-6061-exec-8] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:37:54.789 default [http-nio-6061-exec-8] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68262906] was not registered for synchronization because synchronization is not active
+2020-10-12 17:37:54.789 default [http-nio-6061-exec-8] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:37:54.789 default [http-nio-6061-exec-8] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:37:54.790 default [http-nio-6061-exec-8] DEBUG c.c.a.d.o.O.add_OperateLog - ==>  Preparing: insert into operate_log_info ( id, UserId, UserName, OperateTime, OperateType, OperateCmd, OperateDsp ) values ( ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-12 17:37:54.790 default [http-nio-6061-exec-8] DEBUG c.c.a.d.o.O.add_OperateLog - ==> Parameters: 0(Integer), 0102003010019801(String), 1(String), 2020-10-12 17:37:54.789(Timestamp), 65792(Integer), 65793(Integer), 查询用户信息(String)
+2020-10-12 17:37:54.812 default [http-nio-6061-exec-8] DEBUG c.c.a.d.o.O.add_OperateLog - <==    Updates: 1
+2020-10-12 17:37:54.812 default [http-nio-6061-exec-8] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68262906]
+2020-10-12 17:37:54.812 default [http-nio-6061-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-10-12 17:37:54.812 default [http-nio-6061-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [PageInfo{pageNum=1, pageSize=10, size=6, startRow=1, endRow=6, total=6, pages=1, list=Page{count=tru (truncated)...]
+2020-10-12 17:37:54.813 default [http-nio-6061-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2020-10-12 17:40:17.767 default [http-nio-6061-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/userLogin/getAll?userName=&currentPage=1&pageSize=10&loginUserID=0102003010019801&loginUserName=1", parameters={masked}
+2020-10-12 17:40:17.767 default [http-nio-6061-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public com.github.pagehelper.PageInfo<com.crims.apps.model.confinfo.ConfUserInfo> com.crims.apps.controller.user.ConfUserController.getAll(java.lang.String,java.lang.String,java.lang.String,int,int)
+2020-10-12 17:40:17.768 default [http-nio-6061-exec-6] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:40:17.768 default [http-nio-6061-exec-6] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1a2ba460] was not registered for synchronization because synchronization is not active
+2020-10-12 17:40:17.768 default [http-nio-6061-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:40:17.773 default [http-nio-6061-exec-6] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:40:17.774 default [http-nio-6061-exec-6] DEBUG c.c.a.d.c.ConfUserDao.getAll_COUNT - ==>  Preparing: SELECT count(0) FROM conf_user WHERE username LIKE ? 
+2020-10-12 17:40:17.774 default [http-nio-6061-exec-6] DEBUG c.c.a.d.c.ConfUserDao.getAll_COUNT - ==> Parameters: %%(String)
+2020-10-12 17:40:17.775 default [http-nio-6061-exec-6] DEBUG c.c.a.d.c.ConfUserDao.getAll_COUNT - <==      Total: 1
+2020-10-12 17:40:17.776 default [http-nio-6061-exec-6] DEBUG c.c.a.d.confinfo.ConfUserDao.getAll - ==>  Preparing: select roleid, userid, username, password, priorlevel, unitid, position, telephone, mobile, address, usestate, operateaction, operateuserid,operateusername, lastModifyTime,ip from conf_user where username like ? ORDER BY userid DESC LIMIT ? 
+2020-10-12 17:40:17.776 default [http-nio-6061-exec-6] DEBUG c.c.a.d.confinfo.ConfUserDao.getAll - ==> Parameters: %%(String), 10(Integer)
+2020-10-12 17:40:17.779 default [http-nio-6061-exec-6] DEBUG c.c.a.d.confinfo.ConfUserDao.getAll - <==      Total: 6
+2020-10-12 17:40:17.779 default [http-nio-6061-exec-6] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1a2ba460]
+2020-10-12 17:40:17.779 default [http-nio-6061-exec-6] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:40:17.780 default [http-nio-6061-exec-6] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1e7eb6a9] was not registered for synchronization because synchronization is not active
+2020-10-12 17:40:17.780 default [http-nio-6061-exec-6] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:40:17.780 default [http-nio-6061-exec-6] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:40:17.780 default [http-nio-6061-exec-6] DEBUG c.c.a.d.o.O.add_OperateLog - ==>  Preparing: insert into operate_log_info ( id, UserId, UserName, OperateTime, OperateType, OperateCmd, OperateDsp ) values ( ?, ?, ?, ?, ?, ?, ? ) 
+2020-10-12 17:40:17.781 default [http-nio-6061-exec-6] DEBUG c.c.a.d.o.O.add_OperateLog - ==> Parameters: 0(Integer), 0102003010019801(String), 1(String), 2020-10-12 17:40:17.779(Timestamp), 65792(Integer), 65793(Integer), 查询用户信息(String)
+2020-10-12 17:40:17.805 default [http-nio-6061-exec-6] DEBUG c.c.a.d.o.O.add_OperateLog - <==    Updates: 1
+2020-10-12 17:40:17.805 default [http-nio-6061-exec-6] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1e7eb6a9]
+2020-10-12 17:40:17.806 default [http-nio-6061-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-10-12 17:40:17.806 default [http-nio-6061-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [PageInfo{pageNum=1, pageSize=10, size=6, startRow=1, endRow=6, total=6, pages=1, list=Page{count=tru (truncated)...]
+2020-10-12 17:40:17.806 default [http-nio-6061-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2020-10-12 17:40:19.137 default [http-nio-6061-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/userLogin/getConfUserList", parameters={}
+2020-10-12 17:40:19.137 default [http-nio-6061-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.util.List<com.crims.apps.model.confinfo.ConfUserInfo> com.crims.apps.controller.user.ConfUserController.getConfUserList()
+2020-10-12 17:40:19.138 default [http-nio-6061-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:40:19.138 default [http-nio-6061-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ce8d2a3] was not registered for synchronization because synchronization is not active
+2020-10-12 17:40:19.138 default [http-nio-6061-exec-1] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:40:19.138 default [http-nio-6061-exec-1] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:40:19.138 default [http-nio-6061-exec-1] DEBUG c.c.a.d.c.C.getConfUserList - ==>  Preparing: SELECT roleid, userid, username, password, priorlevel, unitid, position, telephone, mobile, address, usestate, operateaction, operateuserid,operateusername, lastModifyTime,ip FROM conf_user ORDER BY userid DESC 
+2020-10-12 17:40:19.139 default [http-nio-6061-exec-1] DEBUG c.c.a.d.c.C.getConfUserList - ==> Parameters: 
+2020-10-12 17:40:19.141 default [http-nio-6061-exec-1] DEBUG c.c.a.d.c.C.getConfUserList - <==      Total: 6
+2020-10-12 17:40:19.142 default [http-nio-6061-exec-1] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@ce8d2a3]
+2020-10-12 17:40:19.142 default [http-nio-6061-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-10-12 17:40:19.142 default [http-nio-6061-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [[com.crims.apps.model.confinfo.ConfUserInfo@651aa247, com.crims.apps.model.confinfo.ConfUserInfo@5cf (truncated)...]
+2020-10-12 17:40:19.143 default [http-nio-6061-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2020-10-12 17:40:19.174 default [http-nio-6061-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/roleinfo/getRoleInfoList", parameters={}
+2020-10-12 17:40:19.174 default [http-nio-6061-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to public java.util.List<com.crims.apps.model.confinfo.ConfRole> com.crims.apps.controller.role.RoleInfoController.getRoleInfoList()
+2020-10-12 17:40:19.175 default [http-nio-6061-exec-4] DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2020-10-12 17:40:19.175 default [http-nio-6061-exec-4] DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3167c5f9] was not registered for synchronization because synchronization is not active
+2020-10-12 17:40:19.175 default [http-nio-6061-exec-4] DEBUG o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+2020-10-12 17:40:19.175 default [http-nio-6061-exec-4] DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@5073bf91] will not be managed by Spring
+2020-10-12 17:40:19.176 default [http-nio-6061-exec-4] DEBUG c.c.a.d.c.R.getRoleInfoList - ==>  Preparing: SELECT roleid, rolename, maxcontlchnel, onlinecontrl, operateright, usestate, operateaction,operateuserid,operateusername,lastmodifytime FROM conf_role ORDER BY roleid DESC 
+2020-10-12 17:40:19.176 default [http-nio-6061-exec-4] DEBUG c.c.a.d.c.R.getRoleInfoList - ==> Parameters: 
+2020-10-12 17:40:19.179 default [http-nio-6061-exec-4] DEBUG c.c.a.d.c.R.getRoleInfoList - <==      Total: 5
+2020-10-12 17:40:19.179 default [http-nio-6061-exec-4] DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3167c5f9]
+2020-10-12 17:40:19.179 default [http-nio-6061-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2020-10-12 17:40:19.179 default [http-nio-6061-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [[com.crims.apps.model.confinfo.ConfRole@7573c363, com.crims.apps.model.confinfo.ConfRole@4b825d3b, c (truncated)...]
+2020-10-12 17:40:19.179 default [http-nio-6061-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVideotapeDriveDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVideotapeDrive">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="drivename" jdbcType="VARCHAR" property="drivename" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+        <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+        <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, drivename,operateaction,operateuserid,operateusername,lastmodifytime
+    </sql>
+
+    <select id="getVideotapeDriveList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_videotape_drive
+    </select>
+
+    <insert id="insertVideotapeDriveInfo" parameterType="com.crims.apps.model.confinfo.ConfVideotapeDrive">
+        insert into conf_videotape_drive(drivename,operateaction,operateuserid,operateusername,lastmodifytime)
+        values (#{drivename,jdbcType=VARCHAR},#{operateaction,jdbcType=INTEGER}, #{operateuserid,jdbcType=VARCHAR},
+                #{operateusername,jdbcType=VARCHAR},#{lastmodifytime,jdbcType=TIMESTAMP})
+    </insert>
+
+</mapper>

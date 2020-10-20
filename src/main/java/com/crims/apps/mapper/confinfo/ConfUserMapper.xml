@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfUserDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfUserInfo">
+    <result column="roleid" jdbcType="VARCHAR" property="roleId" />
+    <result column="userid" jdbcType="VARCHAR" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="priorlevel" jdbcType="INTEGER" property="priorlevel" />
+    <result column="unitid" jdbcType="VARCHAR" property="unitid" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="usestate" jdbcType="INTEGER" property="usestate" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+    <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+    <result column="lastModifyTime" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    roleid, userid, username, password, priorlevel, unitid, position, telephone, mobile,
+    address, usestate, operateaction, operateuserid,operateusername, lastModifyTime,ip
+    </sql>
+
+    <select id="checkLogin" parameterType="java.lang.String" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from conf_user
+      where username = #{userName,jdbcType=VARCHAR}
+      and password = #{password,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getConfUserInfo" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_user
+        where username = #{userName,jdbcType=VARCHAR}
+        and nodeid = #{nodeId,jdbcType=VARCHAR} and usercls = '01'
+    </select>
+
+    <select id="getConfUserList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_user ORDER BY userid DESC
+    </select>
+
+    <select id="getAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_user
+        where username like  #{userName,jdbcType=VARCHAR} ORDER BY userid DESC
+    </select>
+
+    <insert id="insertConfUser" parameterType="com.crims.apps.model.confinfo.ConfUserInfo">
+        insert into conf_user(roleid, userid, username,password, priorlevel,unitid,position,
+                telephone,mobile,address,usestate,operateaction,operateuserid,operateusername,lastModifyTime,ip)
+        values (#{roleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR}, #{priorlevel,jdbcType=INTEGER},
+        #{unitid,jdbcType=VARCHAR},#{position,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},
+        #{usestate,jdbcType=INTEGER},#{operateaction,jdbcType=INTEGER}, #{operateuserid,jdbcType=VARCHAR}, #{operateusername,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateConfUser" parameterType="com.crims.apps.model.confinfo.ConfUserInfo">
+        update conf_user
+        set username = #{userName,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR},
+            priorlevel = #{priorlevel,jdbcType=INTEGER},
+            unitid = #{unitid,jdbcType=VARCHAR},
+            position = #{position,jdbcType=VARCHAR},
+            telephone = #{telephone,jdbcType=VARCHAR},
+            mobile = #{mobile,jdbcType=VARCHAR},
+            address = #{address,jdbcType=VARCHAR},
+            usestate = #{usestate,jdbcType=INTEGER},
+            operateaction = #{operateaction,jdbcType=INTEGER},
+            lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP}
+        where userid = #{userId,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteConfUser" parameterType="com.crims.apps.model.confinfo.ConfUserInfo">
+        update conf_user
+        set usestate = #{usestate,jdbcType=INTEGER},
+            operateaction = #{operateaction,jdbcType=INTEGER},
+            lastModifyTime = #{lastModifyTime,jdbcType=TIMESTAMP}
+        where userid = #{userId,jdbcType=VARCHAR}
+    </delete>
+</mapper>

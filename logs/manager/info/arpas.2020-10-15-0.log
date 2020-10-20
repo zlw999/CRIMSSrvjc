@@ -1,0 +1,43 @@
+2020-10-15 09:09:54.428 default [main] INFO  c.crims.CrimsadminMasterApplication - Starting CrimsadminMasterApplication on DESKTOP-O536LBQ with PID 17248 (C:\ProgramFiles\workspace\CRIMSSrvjc\target\classes started by 张龙伟 in C:\ProgramFiles\workspace\CRIMSSrvjc)
+2020-10-15 09:09:54.429 default [main] INFO  c.crims.CrimsadminMasterApplication - No active profile set, falling back to default profiles: default
+2020-10-15 09:09:55.422 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-10-15 09:09:55.424 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-10-15 09:09:55.496 default [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53ms. Found 0 repository interfaces.
+2020-10-15 09:09:55.785 default [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7372c96f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-15 09:09:55.822 default [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-10-15 09:09:55.833 default [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cedb0470] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-15 09:09:56.153 default [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 6061 (http)
+2020-10-15 09:09:56.175 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-6061"]
+2020-10-15 09:09:56.187 default [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2020-10-15 09:09:56.187 default [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.17]
+2020-10-15 09:09:56.307 default [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-10-15 09:09:56.308 default [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1834 ms
+2020-10-15 09:09:57.367 default [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-15 09:09:57.741 default [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2020-10-15 09:09:57.800 default [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-10-15 09:09:57.814 default [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-10-15 09:09:57.827 default [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-10-15 09:09:58.062 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_1
+2020-10-15 09:09:58.157 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_2
+2020-10-15 09:09:58.266 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_3
+2020-10-15 09:09:58.360 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_1
+2020-10-15 09:09:58.405 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_2
+2020-10-15 09:09:58.470 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_1
+2020-10-15 09:09:58.512 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_2
+2020-10-15 09:09:58.565 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_3
+2020-10-15 09:09:58.623 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_4
+2020-10-15 09:09:58.808 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getALLUsingGET_3
+2020-10-15 09:09:58.828 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addZyFileUsingPOST_1
+2020-10-15 09:09:58.859 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_4
+2020-10-15 09:09:58.866 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_5
+2020-10-15 09:09:58.893 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: uploadFileUsingPOST_1
+2020-10-15 09:09:58.909 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: getAllUsingGET_5
+2020-10-15 09:09:58.936 default [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: findAllUsingGET_6
+2020-10-15 09:09:58.958 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-6061"]
+2020-10-15 09:09:58.973 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-6061"]
+2020-10-15 09:09:58.974 default [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2020-10-15 09:09:59.039 default [main] INFO  o.apache.catalina.util.LifecycleBase - The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2020-10-15 09:09:59.039 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-6061"]
+2020-10-15 09:09:59.039 default [main] INFO  o.a.coyote.http11.Http11NioProtocol - Destroying ProtocolHandler ["http-nio-6061"]
+2020-10-15 09:09:59.047 default [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2020-10-15 09:09:59.060 default [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'

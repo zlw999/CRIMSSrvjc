@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVqdCameraTaskDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVqdCameraTask">
+    <id column="taskNo" jdbcType="INTEGER" property="taskno" />
+    <result column="taskName" jdbcType="VARCHAR" property="taskname" />
+    <result column="vqdsvrid" jdbcType="VARCHAR" property="vqdsvrid" />
+    <result column="rtuid" jdbcType="VARCHAR" property="rtuid" />
+    <result column="protocoltype" jdbcType="VARCHAR" property="protocoltype" />
+    <result column="startDate" jdbcType="DATE" property="startdate" />
+    <result column="endDate" jdbcType="DATE" property="enddate" />
+    <result column="days" jdbcType="VARCHAR" property="days" />
+    <result column="timeRanges" jdbcType="VARCHAR" property="timeranges" />
+    <result column="vqdCount" jdbcType="INTEGER" property="vqdcount" />
+    <result column="usestate" jdbcType="INTEGER" property="usestate" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="lastmodifyuser" jdbcType="VARCHAR" property="lastmodifyuser" />
+    <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    <result column="taskType" jdbcType="VARCHAR" property="tasktype" />
+    <result column="analysetype" jdbcType="VARCHAR" property="analysetype" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    taskNo, taskName, vqdsvrid, rtuid, protocoltype, startDate, endDate, days, timeRanges, 
+    vqdCount, usestate, operateaction, lastmodifyuser, lastmodifytime, taskType, analysetype
+  </sql>
+
+  <select id="getConfVqdCameraTaskInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from conf_vqd_camera_task order by lastmodifytime desc limit 1
+  </select>
+
+  <select id="getALL" resultMap="BaseResultMap">
+     select
+     <include refid="Base_Column_List" />
+     from conf_vqd_camera_task order by lastmodifytime desc
+  </select>
+
+  <insert id="insertConfVqdCameraTaskInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraTask">
+    insert into conf_vqd_camera_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskno != null">
+        taskNo,
+      </if>
+      <if test="taskname != null">
+        taskName,
+      </if>
+      <if test="vqdsvrid != null">
+        vqdsvrid,
+      </if>
+      <if test="rtuid != null">
+        rtuid,
+      </if>
+      <if test="protocoltype != null">
+        protocoltype,
+      </if>
+      <if test="startdate != null">
+        startDate,
+      </if>
+      <if test="enddate != null">
+        endDate,
+      </if>
+      <if test="days != null">
+        days,
+      </if>
+      <if test="timeranges != null">
+        timeRanges,
+      </if>
+      <if test="vqdcount != null">
+        vqdCount,
+      </if>
+      <if test="usestate != null">
+        usestate,
+      </if>
+      <if test="operateaction != null">
+        operateaction,
+      </if>
+      <if test="lastmodifyuser != null">
+        lastmodifyuser,
+      </if>
+      <if test="lastmodifytime != null">
+        lastmodifytime,
+      </if>
+      <if test="tasktype != null">
+        taskType,
+      </if>
+      <if test="analysetype != null">
+          analysetype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskno != null">
+        #{taskno,jdbcType=INTEGER},
+      </if>
+      <if test="taskname != null">
+        #{taskname,jdbcType=VARCHAR},
+      </if>
+      <if test="vqdsvrid != null">
+        #{vqdsvrid,jdbcType=VARCHAR},
+      </if>
+      <if test="rtuid != null">
+        #{rtuid,jdbcType=VARCHAR},
+      </if>
+      <if test="protocoltype != null">
+        #{protocoltype,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=VARCHAR},
+      </if>
+      <if test="timeranges != null">
+        #{timeranges,jdbcType=VARCHAR},
+      </if>
+      <if test="vqdcount != null">
+        #{vqdcount,jdbcType=INTEGER},
+      </if>
+      <if test="usestate != null">
+        #{usestate,jdbcType=INTEGER},
+      </if>
+      <if test="operateaction != null">
+        #{operateaction,jdbcType=INTEGER},
+      </if>
+      <if test="lastmodifyuser != null">
+        #{lastmodifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifytime != null">
+        #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tasktype != null">
+        #{tasktype,jdbcType=VARCHAR},
+      </if>
+      <if test="analysetype != null">
+        #{analysetype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateConfVqdCameraTaskInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraTask">
+    update conf_vqd_camera_task
+    <set>
+      <if test="taskname != null">
+        taskName = #{taskname,jdbcType=VARCHAR},
+      </if>
+      <if test="vqdsvrid != null">
+        vqdsvrid = #{vqdsvrid,jdbcType=VARCHAR},
+      </if>
+      <if test="rtuid != null">
+        rtuid = #{rtuid,jdbcType=VARCHAR},
+      </if>
+      <if test="protocoltype != null">
+        protocoltype = #{protocoltype,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startDate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null">
+        endDate = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="days != null">
+        days = #{days,jdbcType=VARCHAR},
+      </if>
+      <if test="timeranges != null">
+        timeRanges = #{timeranges,jdbcType=VARCHAR},
+      </if>
+      <if test="vqdcount != null">
+        vqdCount = #{vqdcount,jdbcType=INTEGER},
+      </if>
+      <if test="usestate != null">
+        usestate = #{usestate,jdbcType=INTEGER},
+      </if>
+      <if test="operateaction != null">
+        operateaction = #{operateaction,jdbcType=INTEGER},
+      </if>
+      <if test="lastmodifyuser != null">
+        lastmodifyuser = #{lastmodifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifytime != null">
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tasktype != null">
+        taskType = #{tasktype,jdbcType=VARCHAR},
+      </if>
+      <if test="analysetype != null">
+        analysetype = #{analysetype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where taskNo = #{taskno,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteConfVqdCameraTaskInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraTask">
+    update conf_vqd_camera_task
+    set operateaction = #{operateaction,jdbcType=INTEGER},
+        usestate = #{usestate,jdbcType=INTEGER},
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where taskNo = #{taskno,jdbcType=INTEGER}
+  </delete>
+
+  <select id="getVqdCameraTaskInfoByTaskNo" parameterType="java.lang.Integer" resultType="map">
+      select a.taskNo,a.deviceid,a.lastmodifytime,a.operateaction,a.usestate,b.taskName,b.vqdsvrid,b.taskType,b.days,b.analysetype
+      from conf_vqd_camera a,conf_vqd_camera_task b where a.taskNo = b.taskNo and b.taskNo = #{taskNo,jdbcType=INTEGER}
+  </select>
+</mapper>

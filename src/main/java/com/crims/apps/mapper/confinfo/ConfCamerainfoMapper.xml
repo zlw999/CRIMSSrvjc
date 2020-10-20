@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfCamerainfoDao">
+
+    <select id="getColumnName" resultType="java.lang.String">
+        select column_name from information_schema.columns where table_name='conf_camerainfo'
+        and column_name != 'deviceid' and column_name != 'devicename' and TABLE_SCHEMA='crimsdbs'
+    </select>
+
+    <select id="insertConfCameraInfo" parameterType="com.crims.apps.common.struct.CommonColumn">
+        alter table conf_camerainfo add ${name} ${type}(${length})
+    </select>
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfChannelnumDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfChannelnum">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="nodeid" jdbcType="VARCHAR" property="nodeid" />
+        <result column="videochannelnum" jdbcType="INTEGER" property="videochannelnum" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, nodeid, videochannelnum
+    </sql>
+
+    <select id="getChannelNumByNodeID" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_channelnum where nodeid = #{nodeid,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getChannelNumInfo" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_channelnum
+    </select>
+
+    <insert id="insertChannelNumInfo" parameterType="com.crims.apps.model.confinfo.ConfChannelnum">
+        insert into conf_channelnum(nodeid,videochannelnum)
+        values (#{nodeid,jdbcType=VARCHAR}, #{videochannelnum,jdbcType=INTEGER})
+    </insert>
+
+    <update id="updateChannelNumInfo" parameterType="com.crims.apps.model.confinfo.ConfChannelnum">
+        update conf_channelnum
+        set videochannelnum = #{videochannelnum,jdbcType=INTEGER}
+        where nodeid = #{nodeid,jdbcType=VARCHAR}
+     </update>
+</mapper>

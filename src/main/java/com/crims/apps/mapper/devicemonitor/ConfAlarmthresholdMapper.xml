@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.devicemonitor.ConfAlarmthresholdDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.devicemonitor.ConfAlarmthreshold">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="appsrvid" jdbcType="VARCHAR" property="appsrvid" />
+    <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    <result column="mpid" jdbcType="VARCHAR" property="mpid" />
+    <result column="UpValue" jdbcType="DOUBLE" property="upvalue" />
+    <result column="DownValue" jdbcType="DOUBLE" property="downvalue" />
+    <result column="AriseDela" jdbcType="INTEGER" property="arisedela" />
+    <result column="DisDelay" jdbcType="INTEGER" property="disdelay" />
+    <result column="AlarmSubType" jdbcType="VARCHAR" property="alarmsubtype" />
+    <result column="AlarmLevel" jdbcType="VARCHAR" property="alarmlevel" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, appsrvid, deviceid, mpid, UpValue, DownValue, AriseDela, DisDelay, AlarmSubType, 
+    AlarmLevel, operateaction, lastmodifytime
+  </sql>
+
+  <select id="getListByMpid" resultType="com.crims.apps.model.devicemonitor.ConfAlarmthreshold" parameterType="string">
+    select
+    <include refid="Base_Column_List" />
+    from conf_alarmthreshold_double
+    where mpid = #{mPid}
+  </select>
+
+  <delete id="deleteByDeviceId" parameterType="string">
+     delete from conf_alarmthreshold_double
+    where deviceid = #{deviceId}
+  </delete>
+
+  <delete id="deleteAlarmThreshold" parameterType="java.util.Map">
+     delete from conf_alarmthreshold_double
+     where mpid = #{mpid,jdbcType=VARCHAR} and UpValue = #{upValue,jdbcType=DOUBLE} and DownValue = #{downValue,jdbcType=DOUBLE}
+  </delete>
+
+  <update id="udpateAlarmThreshold" parameterType="com.crims.apps.model.devicemonitor.ConfAlarmthreshold">
+    update conf_alarmthreshold_double
+    set AlarmSubType = #{alarmsubtype,jdbcType=VARCHAR},
+        AlarmLevel = #{alarmlevel,jdbcType=VARCHAR},
+        UpValue = #{upvalue,jdbcType=DOUBLE},
+        AriseDela = #{arisedela,jdbcType=INTEGER},
+        DisDelay = #{disdelay,jdbcType=INTEGER},
+        operateaction = #{operateaction,jdbcType=INTEGER},
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+    where mpid = #{mpid,jdbcType=VARCHAR} and DownValue = #{downvalue,jdbcType=DOUBLE}
+  </update>
+
+  <insert id="insert" parameterType="com.crims.apps.model.devicemonitor.ConfAlarmthreshold">
+    insert into conf_alarmthreshold_double (id, appsrvid, deviceid, 
+      mpid, UpValue, DownValue, 
+      AriseDela, DisDelay, AlarmSubType, 
+      AlarmLevel, operateaction, lastmodifytime
+      )
+    values (#{id,jdbcType=INTEGER}, #{appsrvid,jdbcType=VARCHAR}, #{deviceid,jdbcType=VARCHAR}, 
+      #{mpid,jdbcType=VARCHAR}, #{upvalue,jdbcType=DOUBLE}, #{downvalue,jdbcType=DOUBLE}, 
+      #{arisedela,jdbcType=INTEGER}, #{disdelay,jdbcType=INTEGER}, #{alarmsubtype,jdbcType=VARCHAR},
+      #{alarmlevel,jdbcType=VARCHAR}, #{operateaction,jdbcType=INTEGER}, #{lastmodifytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <insert id="insertList" parameterType="java.util.List">
+      insert into conf_alarmthreshold_double (id, appsrvid, deviceid,
+      mpid, UpValue, DownValue,
+      AriseDela, DisDelay, AlarmSubType,
+      AlarmLevel, operateaction, lastmodifytime
+      )
+    values  <foreach collection="list" index="index" item="item" separator=",">
+    (#{item.id,jdbcType=INTEGER}, #{item.appsrvid,jdbcType=VARCHAR}, #{item.deviceid,jdbcType=VARCHAR},
+      #{item.mpid,jdbcType=VARCHAR}, #{item.upvalue,jdbcType=DOUBLE}, #{item.downvalue,jdbcType=DOUBLE},
+      #{item.arisedela,jdbcType=INTEGER}, #{item.disdelay,jdbcType=INTEGER}, #{item.alarmsubtype,jdbcType=VARCHAR},
+      #{item.alarmlevel,jdbcType=VARCHAR}, #{item.operateaction,jdbcType=INTEGER}, #{item.lastmodifytime,jdbcType=TIMESTAMP}
+      )
+    </foreach>
+  </insert>
+
+</mapper>

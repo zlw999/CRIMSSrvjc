@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVqdCameraDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVqdCamera">
+        <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+        <result column="taskNo" jdbcType="INTEGER" property="taskNo" />
+        <result column="usestate" jdbcType="INTEGER" property="usestate" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       deviceid, taskNo, usestate, operateaction, lastmodifytime
+    </sql>
+
+    <select id="getALL" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_vqd_camera
+    </select>
+
+    <insert id="insertConfVqdCameraInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCamera">
+        insert into conf_vqd_camera
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="deviceid != null">
+                deviceid,
+            </if>
+            <if test="taskNo != null">
+                taskNo,
+            </if>
+            <if test="usestate != null">
+                usestate,
+            </if>
+            <if test="operateaction != null">
+                operateaction,
+            </if>
+            <if test="lastmodifytime != null">
+                lastmodifytime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="deviceid != null">
+                #{deviceid,jdbcType=VARCHAR},
+            </if>
+            <if test="taskNo != null">
+                #{taskNo,jdbcType=INTEGER},
+            </if>
+            <if test="usestate != null">
+                #{usestate,jdbcType=INTEGER},
+            </if>
+            <if test="operateaction != null">
+                #{operateaction,jdbcType=INTEGER},
+            </if>
+            <if test="lastmodifytime != null">
+                #{lastmodifytime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateConfVqdCameraInfo" parameterType="java.lang.Integer">
+        delete from conf_vqd_camera
+        where taskNo = #{taskNo,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deleteConfVqdCameraInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCamera">
+      update conf_vqd_camera
+      set operateaction = #{operateaction,jdbcType=INTEGER},
+        usestate = #{usestate,jdbcType=INTEGER},
+        lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+      where taskNo = #{taskNo,jdbcType=INTEGER}
+    </delete>
+
+    <select id="getVqdCameraInfoByChannelId" parameterType="java.lang.Integer" resultType="map">
+      select cvc.deviceid,cc.channelname,cvc.taskNo from conf_vqd_camera cvc,conf_channel cc where cvc.deviceid = cc.channelid
+      and cvc.taskNo = #{taskNo,jdbcType=INTEGER}
+    </select>
+</mapper>

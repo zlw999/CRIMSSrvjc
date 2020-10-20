@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.nettop.ConfNettopDao">
+
+<select id="findAll" parameterType="com.crims.apps.model.nettop.ConfNettop" resultType="com.crims.apps.model.nettop.ConfNettop">
+    select * from conf_nettop order by sortid
+</select>
+
+<insert id="insert" parameterType="com.crims.apps.model.nettop.ConfNettop" useGeneratedKeys="true" keyProperty="topid">
+    INSERT INTO conf_nettop( `topname`, `topdata`, `usestate`, `operateaction`, `operateuserid`, `operateusername`, `lastModifyTime`, `parentid`, `sortid`)
+    VALUES (#{topname}, #{topdata}, #{usestate}, #{operateaction},
+        #{operateuserid}, #{operateusername}, #{lastModifyTime},#{parentid},#{sortid});
+</insert>
+
+<delete id="delete" parameterType="int">
+    delete from conf_nettop where topid=#{topid}
+</delete>
+
+<update id="update">
+UPDATE conf_nettop SET `topname` = #{topname}, `topdata` = #{topdata}, `usestate` = #{usestate}, `operateaction` = #{operateaction}, `operateuserid` = #{operateuserid}, `operateusername` = #{operateusername}, `lastModifyTime` = #{lastModifyTime}, `parentid` = #{parentid}, `sortid` = #{sortid} where topid=#{topid};
+
+</update>
+
+<select id="findConfnettopByTopid" parameterType="int" resultType="com.crims.apps.model.nettop.ConfNettop">
+    select * from conf_nettop where topid=#{topid}
+</select>
+
+<select id="selectByParentId" parameterType="int" resultType="com.crims.apps.model.nettop.ConfNettop">
+    select * from conf_nettop where parentid=#{topid}
+
+</select>
+
+<select id="findConfnettopByTopidByParentId" parameterType="int" resultType="com.crims.apps.model.nettop.ConfNettop">
+     select * from conf_nettop where topid=#{parentid}
+</select>
+
+    <select id="findConfnettopById" parameterType="int" resultType="com.crims.apps.model.nettop.ConfNettop">
+    select * from conf_nettop where topid=#{id}
+</select>
+
+<update id="updateByTopid" parameterType="int">
+    update conf_nettop set parentid=#{topidOld} where topid=#{t1}
+</update>
+
+    <select id="findConfnettopByParentId" parameterType="com.crims.apps.model.nettop.ConfNettop" resultType="com.crims.apps.model.nettop.ConfNettop">
+     select * from conf_nettop where parentid=#{parentid} and topid != #{id} and sortid >= #{sortid}
+</select>
+
+    <update id="updateConfNettopWithId" parameterType="com.crims.apps.model.nettop.ConfNettop">
+
+        update conf_nettop set parentid=#{parentid},sortid=#{sortid} where topid=#{topid}
+    </update>
+    <select id="findConfNettopById" resultType="com.crims.apps.model.nettop.ConfNettop" parameterType="com.crims.apps.model.nettop.ConfNettop">
+        select topname,topdata from conf_nettop where topid = #{topid}
+    </select>
+
+    <update id="update1" parameterType="com.crims.apps.model.nettop.ConfNettop">
+UPDATE conf_nettop SET topdata=#{topdata} where topid=#{id};
+
+</update>
+
+    <sql id="ConNettop_List">
+      topid, topname, topdata, usestate, operateaction, operateuserid, operateusername, lastModifyTime, parentid, sortid
+  </sql>
+</mapper>

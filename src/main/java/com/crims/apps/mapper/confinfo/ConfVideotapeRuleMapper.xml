@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVideotapeRuleDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVideotapeRule">
+        <result column="channelid" jdbcType="VARCHAR" property="channelid" />
+        <result column="cycle" jdbcType="VARCHAR" property="cycle" />
+        <result column="days" jdbcType="VARCHAR" property="days" />
+        <result column="times" jdbcType="VARCHAR" property="times" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+        <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+        <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        channelid, cycle, days, times, operateaction, operateuserid, operateusername, lastmodifytime
+    </sql>
+
+    <select id="getConfVideotapeRuleList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_videotape_rule
+    </select>
+
+    <select id="getConfVideotapeRuleInfo" resultMap="BaseResultMap" parameterType="string">
+        select
+        <include refid="Base_Column_List" />
+        from conf_videotape_rule
+        where channelid = #{channelID,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertConfVideotapeRuleInfo" parameterType="com.crims.apps.model.confinfo.ConfVideotapeRule">
+        insert into conf_videotape_rule(channelid, cycle, days, times,operateaction,operateuserid,operateusername,lastmodifytime)
+        values (#{channelid,jdbcType=VARCHAR}, #{cycle,jdbcType=VARCHAR}, #{days,jdbcType=VARCHAR},#{times,jdbcType=VARCHAR},
+        #{operateaction,jdbcType=INTEGER}, #{operateuserid,jdbcType=VARCHAR},#{operateusername,jdbcType=VARCHAR},#{lastmodifytime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updateConfVideotapeRule" parameterType="com.crims.apps.model.confinfo.ConfVideotapeRule">
+        update conf_videotape_rule
+        set cycle = #{cycle,jdbcType=VARCHAR},
+            days = #{days,jdbcType=VARCHAR},
+            times = #{times,jdbcType=VARCHAR},
+            operateaction = #{operateaction,jdbcType=INTEGER},
+            lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+        where channelid = #{channelid,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteConfVideotapeRule" parameterType="string">
+        delete from conf_videotape_rule
+        where channelid = #{channelID,jdbcType=VARCHAR}
+    </delete>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVqdCameraNumDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVqdCameraNum">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="nodeid" jdbcType="VARCHAR" property="nodeid" />
+        <result column="videochannelnum" jdbcType="INTEGER" property="videochannelnum" />
+        <result column="taskno" jdbcType="INTEGER" property="taskno" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, nodeid, videochannelnum, taskno
+    </sql>
+
+    <select id="getVqdCameraNumByTaskNo" resultMap="BaseResultMap" parameterType="map">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_vqd_cameranum where taskno = #{taskno,jdbcType=INTEGER} and nodeid = #{nodeid,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getVqdCameraNumInfo" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_vqd_cameranum
+    </select>
+
+    <insert id="insertVqdCameraNumInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraNum">
+        insert into conf_vqd_cameranum(nodeid,videochannelnum,taskno)
+        values (#{nodeid,jdbcType=VARCHAR}, #{videochannelnum,jdbcType=INTEGER},#{taskno,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateVqdCameraNumInfo" parameterType="com.crims.apps.model.confinfo.ConfVqdCameraNum">
+        update conf_vqd_cameranum
+        set videochannelnum = #{videochannelnum,jdbcType=INTEGER}
+        where nodeid = #{nodeid,jdbcType=VARCHAR}
+     </update>
+
+    <delete id="deleteVqdCameraNumInfo" parameterType="java.lang.Integer">
+        delete from conf_vqd_cameranum
+        where taskno = #{taskno,jdbcType=INTEGER}
+    </delete>
+</mapper>

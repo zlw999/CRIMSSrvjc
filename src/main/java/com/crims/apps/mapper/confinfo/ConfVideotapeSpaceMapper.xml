@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.ConfVideotapeSpaceDao">
+    <resultMap id="BaseResultMap" type="com.crims.apps.model.confinfo.ConfVideotapeSpace">
+        <result column="channel_id" jdbcType="VARCHAR" property="channel_id" />
+        <result column="file_index" jdbcType="INTEGER" property="file_index" />
+        <result column="file_path" jdbcType="VARCHAR" property="file_path" />
+        <result column="filesize" jdbcType="INTEGER" property="filesize" />
+        <result column="fileiscreated" jdbcType="VARCHAR" property="fileiscreated" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+        <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+        <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        channel_id, file_index, file_path, filesize,fileiscreated, operateaction, operateuserid, operateusername, lastmodifytime
+    </sql>
+
+    <select id="getConfVideotapeSpaceList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from conf_videotape_space order by channel_id desc
+    </select>
+
+    <select id="getConfVideotapeSpaceByID" resultMap="BaseResultMap" parameterType="string">
+        select
+        <include refid="Base_Column_List" />
+        from conf_videotape_space
+        where channel_id = #{channel_id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertConfVideotapeSpaceInfo" parameterType="com.crims.apps.model.confinfo.ConfVideotapeSpace">
+        insert into conf_videotape_space(channel_id, file_index, file_path, filesize,fileiscreated,operateaction,operateuserid,operateusername,lastmodifytime)
+        values (#{channel_id,jdbcType=VARCHAR}, #{file_index,jdbcType=INTEGER}, #{file_path,jdbcType=VARCHAR},#{filesize,jdbcType=INTEGER},
+                #{fileiscreated,jdbcType=VARCHAR},#{operateaction,jdbcType=INTEGER}, #{operateuserid,jdbcType=VARCHAR},
+                #{operateusername,jdbcType=VARCHAR},#{lastmodifytime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <delete id="deleteConfVideotapeSpaceInfo" parameterType="string">
+        delete from conf_videotape_space
+        where file_path = #{file_path,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteVideotapeSpaceInfoByNum" parameterType="map">
+        delete from conf_videotape_space
+        where channel_id = #{channelID,jdbcType=VARCHAR} order by starttime desc limit #{num,jdbcType=INTEGER};
+    </delete>
+
+    <select id="getVideotapeSpaceInfoByNum" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List" />
+        from conf_videotape_space
+        where channel_id = #{channelID,jdbcType=VARCHAR} order by starttime desc limit #{num,jdbcType=INTEGER};
+    </select>
+
+    <select id="getChannelSum" resultType="integer" parameterType="string">
+        select sum(filesize) filesize from conf_videotape_space
+        where channel_id = #{channel_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getFileSizeList" parameterType="string" resultType="java.lang.Integer">
+        select filesize from conf_videotape_space
+        where channel_id = #{channel_id,jdbcType=VARCHAR} GROUP BY filesize
+    </select>
+
+    <select id="getAllChannelFileInfo" resultType="map">
+        select channel_id,sum(filesize) totalSpace from conf_videotape_space GROUP BY channel_id
+    </select>
+
+</mapper>

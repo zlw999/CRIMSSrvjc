@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.devicemonitor.ConfMpattributeDao">
+  <resultMap id="BaseResultMap" type="com.crims.apps.model.devicemonitor.ConfMpattribute">
+    <id column="mpid" jdbcType="VARCHAR" property="mpid" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="appsrvid" jdbcType="VARCHAR" property="appsrvid" />
+    <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    <result column="alarmtype" jdbcType="INTEGER" property="alarmtype" />
+    <result column="mpvaluetype" jdbcType="INTEGER" property="mpvaluetype" />
+    <result column="MPValueUnit" jdbcType="INTEGER" property="mpvalueunit" />
+    <result column="ctrlbitflag" jdbcType="INTEGER" property="ctrlbitflag" />
+    <result column="ValuePrecision" jdbcType="REAL" property="valueprecision" />
+    <result column="MPChangeRate" jdbcType="REAL" property="mpchangerate" />
+    <result column="MPValueCFactorAdd" jdbcType="REAL" property="mpvaluecfactoradd" />
+    <result column="MPValueCFactorRide" jdbcType="REAL" property="mpvaluecfactorride" />
+    <result column="MaxEffectValue" jdbcType="INTEGER" property="maxeffectvalue" />
+    <result column="MinEffectValue" jdbcType="INTEGER" property="mineffectvalue" />
+    <result column="MPModel" jdbcType="INTEGER" property="mpmodel" />
+    <result column="MPCaptureParam" jdbcType="VARCHAR" property="mpcaptureparam" />
+    <result column="MPSaveParam" jdbcType="VARCHAR" property="mpsaveparam" />
+    <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+    <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    mpid, id, appsrvid, deviceid, alarmtype, mpvaluetype, MPValueUnit, ctrlbitflag, ValuePrecision, 
+    MPChangeRate, MPValueCFactorAdd, MPValueCFactorRide, MaxEffectValue, MinEffectValue, 
+    MPModel, MPCaptureParam, MPSaveParam, operateaction, lastmodifytime
+  </sql>
+
+  <delete id="deleteByDeviceId" parameterType="string">
+     delete from conf_mpattribute
+    where deviceid = #{deviceId}
+  </delete>
+
+  <insert id="insert" parameterType="com.crims.apps.model.devicemonitor.ConfMpattribute">
+    insert into conf_mpattribute (mpid, id, appsrvid, 
+      deviceid, alarmtype, mpvaluetype, 
+      MPValueUnit, ctrlbitflag, ValuePrecision, 
+      MPChangeRate, MPValueCFactorAdd, MPValueCFactorRide, 
+      MaxEffectValue, MinEffectValue, MPModel, 
+      MPCaptureParam, MPSaveParam, operateaction, 
+      lastmodifytime)
+    values (#{mpid,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{appsrvid,jdbcType=VARCHAR}, 
+      #{deviceid,jdbcType=VARCHAR}, #{alarmtype,jdbcType=INTEGER}, #{mpvaluetype,jdbcType=INTEGER}, 
+      #{mpvalueunit,jdbcType=INTEGER}, #{ctrlbitflag,jdbcType=INTEGER}, #{valueprecision,jdbcType=REAL}, 
+      #{mpchangerate,jdbcType=REAL}, #{mpvaluecfactoradd,jdbcType=REAL}, #{mpvaluecfactorride,jdbcType=REAL}, 
+      #{maxeffectvalue,jdbcType=INTEGER}, #{mineffectvalue,jdbcType=INTEGER}, #{mpmodel,jdbcType=INTEGER}, 
+      #{mpcaptureparam,jdbcType=VARCHAR}, #{mpsaveparam,jdbcType=VARCHAR}, #{operateaction,jdbcType=INTEGER}, 
+      #{lastmodifytime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertList" parameterType="java.util.List">
+       insert into conf_mpattribute (mpid, id, appsrvid,
+      deviceid, alarmtype, mpvaluetype,
+      MPValueUnit, ctrlbitflag, ValuePrecision,
+      MPChangeRate, MPValueCFactorAdd, MPValueCFactorRide,
+      MaxEffectValue, MinEffectValue, MPModel,
+      MPCaptureParam, MPSaveParam, operateaction,
+      lastmodifytime)
+    values  <foreach collection="list" index="index" item="item" separator=",">
+    (#{item.mpid,jdbcType=VARCHAR}, #{item.id,jdbcType=INTEGER}, #{item.appsrvid,jdbcType=VARCHAR},
+      #{item.deviceid,jdbcType=VARCHAR}, #{item.alarmtype,jdbcType=INTEGER}, #{item.mpvaluetype,jdbcType=INTEGER},
+      #{item.mpvalueunit,jdbcType=INTEGER}, #{item.ctrlbitflag,jdbcType=INTEGER}, #{item.valueprecision,jdbcType=REAL},
+      #{item.mpchangerate,jdbcType=REAL}, #{item.mpvaluecfactoradd,jdbcType=REAL}, #{item.mpvaluecfactorride,jdbcType=REAL},
+      #{item.maxeffectvalue,jdbcType=INTEGER}, #{item.mineffectvalue,jdbcType=INTEGER}, #{item.mpmodel,jdbcType=INTEGER},
+      #{item.mpcaptureparam,jdbcType=VARCHAR}, #{item.mpsaveparam,jdbcType=VARCHAR}, #{item.operateaction,jdbcType=INTEGER},
+      #{item.lastmodifytime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+
+</mapper>

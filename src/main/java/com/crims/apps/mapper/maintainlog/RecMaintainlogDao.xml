@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.maintainlog.RecMaintainlogDao">
+
+    <select id="findAll" parameterType="com.crims.apps.model.maintainlog.RecMaintainlog" resultType="com.crims.apps.model.maintainlog.RecMaintainlog">
+        select * from rec_maintainlog <where>
+        <if test="title !=null and title != ''">
+            and title like '%${title}%'
+        </if>
+        <if test="devicename !=null and devicename != ''">
+           and devicename = #{devicename}
+        </if>
+        <if test="start !=null and end != null">
+            and maintaintime between #{start} and #{end}
+        </if>
+        <if test="nodeid !=null and nodeid!=''">
+            and deviceid like '${nodeid}%'
+        </if>
+        <if test="maintainuser !=null and maintainuser!=''">
+            and maintainuser like #{maintainuser}
+        </if>
+    </where>
+
+    </select>
+
+    <insert id="saveMaintainlog" parameterType="com.crims.apps.model.maintainlog.RecMaintainlog">
+    INSERT INTO rec_maintainlog(`indexno`, `title`, `deviceid`, `devicename`, `devicetype`, `faulttype`, `faultdsp`, `faultreason`, `solution`, `hasDoc`, `maintainuserid`, `maintainuser`, `maintaintime`, `reviewuserid`, `reviewuser`, `reviewtime`, `reviewdsp`, `score`)
+    VALUES (#{indexno}, #{title}, #{deviceid}, #{devicename}, #{devicetype}, #{faulttype}, #{faultdsp}, #{faultreason}, #{solution}, #{hasDoc}, #{maintainuserid}, #{maintainuser}, #{maintaintime}, #{reviewuserid}, #{reviewuser}, #{reviewtime}, #{reviewdsp}, #{score});
+    </insert>
+
+    <delete id="deleteMaintainlog" parameterType="com.crims.apps.model.maintainlog.RecMaintainlog">
+        delete from rec_maintainlog where indexno=#{indexno}
+    </delete>
+
+    <select id="findMaintainlogByIndexno" parameterType="String" resultType="com.crims.apps.model.maintainlog.RecMaintainlog">
+        select <include refid="query"/>
+        from rec_maintainlog where indexno=#{indexno}
+    </select>
+
+    <update id="updateMaintainlog" parameterType="com.crims.apps.model.maintainlog.RecMaintainlog">
+        UPDATE rec_maintainlog SET `title` = #{title}, `deviceid` = #{deviceid}, `devicename` = #{devicename}, `devicetype` = #{devicetype}, `faulttype` = #{faulttype}, `faultdsp` = #{faultdsp}, `faultreason` = #{faultreason}, `solution` = #{solution}, `hasDoc` = #{hasDoc}, `maintainuserid` = #{maintainuserid}, `maintainuser` = #{maintainuser}, `maintaintime` = #{maintaintime}, `reviewuserid` = #{reviewuserid}, `reviewuser` = #{reviewuser}, `reviewtime` = #{reviewtime}, `reviewdsp` = #{reviewdsp}, `score` = #{score} WHERE `indexno` = #{indexno};
+    </update>
+
+    <update id="updatescore" parameterType="com.crims.apps.model.maintainlog.RecMaintainlog">
+        UPDATE rec_maintainlog SET  `reviewuserid` = #{reviewuserid}, `reviewuser` = #{reviewuser}, `reviewtime` = #{reviewtime}, `reviewdsp` = #{reviewdsp}, `score` = #{score} WHERE `indexno` = #{indexno};
+    </update>
+    <sql id="query">
+        indexno, title, deviceid, devicename, devicetype, faulttype, faultdsp, faultreason, solution, hasDoc, maintainuserid, maintainuser, maintaintime, reviewuserid, reviewuser, reviewtime, reviewdsp, score
+    </sql>
+</mapper>

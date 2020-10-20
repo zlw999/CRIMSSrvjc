@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crims.apps.dao.confinfo.NodeConfDao">
+    <resultMap id="ConfNode" type="com.crims.apps.model.confinfo.ConfNode">
+        <result column="nodeid" jdbcType="VARCHAR" property="nodeid" />
+        <result column="nodename" jdbcType="VARCHAR" property="nodename" />
+        <result column="usestate" jdbcType="INTEGER" property="usestate" />
+        <result column="operateaction" jdbcType="INTEGER" property="operateaction" />
+        <result column="operateuserid" jdbcType="VARCHAR" property="operateuserid" />
+        <result column="operateusername" jdbcType="VARCHAR" property="operateusername" />
+        <result column="lastmodifytime" jdbcType="TIMESTAMP" property="lastmodifytime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+       nodeid, nodename, usestate, operateaction, operateuserid, operateusername, lastmodifytime
+    </sql>
+
+    <select id="getALL" parameterType="java.util.Map" resultMap="ConfNode">
+        SELECT <include refid="Base_Column_List" />
+        FROM conf_nodearea ORDER BY nodeid DESC
+    </select>
+
+    <select id="getConfNodeList" parameterType="java.lang.String" resultMap="ConfNode">
+        select
+        <include refid="Base_Column_List" />
+        from conf_nodearea
+        where nodename like  #{nodeNameStr,jdbcType=VARCHAR}  ORDER BY nodeid DESC
+    </select>
+
+    <select id="getNodeInfoByNodeId" parameterType="java.lang.String" resultMap="ConfNode">
+        select
+        <include refid="Base_Column_List" />
+        from conf_nodearea
+        where nodeid = #{nodeid,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertConfNode" parameterType="com.crims.apps.model.confinfo.ConfNode">
+        insert into conf_nodearea(nodeid, nodename, usestate,operateaction, operateuserid, operateusername,lastmodifytime)
+        values (#{nodeid,jdbcType=VARCHAR}, #{nodename,jdbcType=VARCHAR}, #{usestate,jdbcType=INTEGER},
+          #{operateaction,jdbcType=INTEGER}, #{operateuserid,jdbcType=VARCHAR}, #{operateusername,jdbcType=VARCHAR},#{lastmodifytime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updateConfNode" parameterType="com.crims.apps.model.confinfo.ConfNode">
+        update conf_nodearea
+        set nodename = #{nodename,jdbcType=VARCHAR},
+            operateaction = #{operateaction,jdbcType=INTEGER},
+            usestate = #{usestate,jdbcType=INTEGER},
+            lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+        where nodeid = #{nodeid,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteConfNode" parameterType="com.crims.apps.model.confinfo.ConfNode">
+        update conf_nodearea
+        set operateaction = #{operateaction,jdbcType=INTEGER},
+            usestate = #{usestate,jdbcType=INTEGER},
+            lastmodifytime = #{lastmodifytime,jdbcType=TIMESTAMP}
+        where nodeid = #{nodeid,jdbcType=VARCHAR}
+    </delete>
+</mapper>
